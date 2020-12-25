@@ -67,7 +67,7 @@ def handle_message1(event):
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id #使用者ID
     usespeak=str(event.message.text) #使用者講的話
-    if re.match('[0-9]{4}[<>][0-9]',usespeak): # 先判斷是否是使用者要用來存股票的
+    if re.match('[0-9]{4}[<>][0-9]價格',usespeak): # 先判斷是否是使用者要用來存股票的
         data=mongodb.show_user_stock_fountion()
         
         for i in data:
