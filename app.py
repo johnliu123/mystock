@@ -80,11 +80,11 @@ def handle_message(event):
            if getstock< price:
               get=str(stock) + '的價格：' + str(getstock)
               #print(get)
-              line_bot_api.push_message(TextSendMessage(get))
+              line_bot_api.push_message(uid, TextSendMessage(text=get))
            else:
               get=str(stock) + '的價格：' + str(getstock)
               #print(get)
-              line_bot_api.push_message(TextSendMessage(get))
+              line_bot_api.push_message(uid,TextSendMessage(text=get))
               return 0
         
 """
