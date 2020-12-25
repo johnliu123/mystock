@@ -11,14 +11,17 @@ from linebot.models import *
 
 app = Flask(__name__)
 
+#line message api 設定
 # 必須放上自己的Channel Access Token
 line_bot_api = LineBotApi('ps8rdB2odqUku93oarX0pEY5N2KiN5Fbw5pWQ5rPBR9IPAm0IpM+Y9xLTB2wyiTsUQyRzrnGyvnIiK0cymhJQjNmrOVLEfOlQyEfE1DYryo5b6aYPrjm10aLYeb9R/z1RP+yGj6jQ0fTLdtGWDgK0wdB04t89/1O/w1cDnyilFU=')
 # 必須放上自己的Channel Secret
 handler = WebhookHandler('1c771de5f787f511840d0f1402d12b47')
 
-line_bot_api.push_message('U0db823667b9edd2dfea67e380d87cf41', TextSendMessage(text='你可以開始了'))
+#開始啟用時的預設對話
+line_bot_api.push_message('U0db823667b9edd2dfea67e380d87cf41', TextSendMessage(text='歡迎使用股市小助手！！'))
 
 # 監聽所有來自 /callback 的 Post Request
+#接收line的回傳資訊
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -37,6 +40,7 @@ def callback():
     return 'OK'
 
 #訊息傳遞區塊
+#reply_message 使用者輸入訊息 line會回覆相同訊息 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
