@@ -43,11 +43,23 @@ def callback():
 #reply_message 使用者輸入訊息 line會回覆相同訊息 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token,message)
+    #取得顧客資訊
+    profile=line_bot_api.get_profile(event.source.user_id)
+    uid=profile.user_id
+    usespeak=str(event.message.test)
+    if re.match('[0-9]{4}[<>][0-9]',usespeak):
+        mongodb.write_user_stock(stock=usespeak[0:4],bs=usespeak[4:5],price=usespeak[5:])
+        line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+'已經儲存成功'))
+        return
+    
+    elif re.match('刪除[0-9]{4}',usespeak):
+        mongodb.delete_user_stock(stock=usespeak[2:])
+        line_bot_api.push_message(uid,TextSendMessage(usespeak+'已經刪除成功'))    
+        
 
 #主程式
 import os
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    #port = int(os.environ.get('PORT', 5000))
+    #app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
