@@ -59,8 +59,33 @@ def handle_message(event):
         mongodb.delete_user_stock_fountion(stock=usespeak[2:])
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
+    
+    if re.match('[0-9]{4}[<>][0-9]價格',usespeak): # 先判斷是否是使用者要用來存股票的
+        data=mongodb.show_user_stock_fountion()
         
-
+        for i in data:
+           stock=i['stock']
+           bs=i['bs']
+           price=i['price']
+                
+           url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
+           list_req = requests.get(url)
+           soup = BeautifulSoup(list_req.content, "html.parser")
+           tables=soup.find_all('table')[1] #裡面所有文字內容
+           tds=tables.find_all("td")[3]
+           getstock= tds.find('b').text
+           getstock=float(getstock)
+        
+           if getstock< price:
+              get=str(stock) + '的價格：' + str(getstock)
+              #print(get)
+              line_bot_api.push_message(TextSendMessage(get))
+           else:
+              get=str(stock) + '的價格：' + str(getstock)
+              #print(get)
+              line_bot_api.push_message(TextSendMessage(get))
+        
+"""
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message1(event):
     #取得顧客資訊
@@ -93,7 +118,7 @@ def handle_message1(event):
               line_bot_api.push_message(TextSendMessage(get))
         
         return 0
-
+"""
     
   
 
