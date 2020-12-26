@@ -106,7 +106,7 @@ def handle_message1(event):
     
     if re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
-        data = show_user_stock_fountion()
+        data = mongodb.show_user_stock_fountion()
 
         stock_price=[]
         
