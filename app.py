@@ -11,17 +11,6 @@ from linebot.models import *
 import mongodb
 import re
 
-#from __future__ import print_function
-import time
-from linebot import (LineBotApi, WebhookHandler, exceptions)
-from linebot.exceptions import (InvalidSignatureError)
-from linebot.models import *
-import schedule
-from pymongo import MongoClient
-import urllib.parse
-import datetime
-import requests
-from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
