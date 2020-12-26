@@ -25,6 +25,13 @@ handler = WebhookHandler('1c771de5f787f511840d0f1402d12b47')
 #開始啟用時的預設對話
 line_bot_api.push_message('U0db823667b9edd2dfea67e380d87cf41', TextSendMessage(text='歡迎使用股市小助手！！'))
 
+def getuser():
+    #取得顧客資訊
+    profile = line_bot_api.get_profile(event.source.user_id)
+    uid = profile.user_id #使用者ID
+    usespeak=str(event.message.text) #使用者講的話
+    return usespeak
+
 # 監聽所有來自 /callback 的 Post Request
 #接收line的回傳資訊
 @app.route("/callback", methods=['POST'])
@@ -48,10 +55,15 @@ def callback():
 #reply_message 使用者輸入訊息 line會回覆相同訊息 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    """
     #取得顧客資訊
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id #使用者ID
     usespeak=str(event.message.text) #使用者講的話
+    """
+    
+    usespeak=getuser()
+    
     if re.match('[0-9]{4}[<>][0-9]',usespeak): # 先判斷是否是使用者要用來存股票的
         mongodb.write_user_stock_fountion(stock=usespeak[0:4], bs=usespeak[4:5], price=usespeak[5:])
         line_bot_api.push_message(uid, TextSendMessage(usespeak[0:4]+'已經儲存成功'))
@@ -83,12 +95,10 @@ def handle_message(event):
         
            if getstock< price:
               get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
               line_bot_api.push_message(uid, TextSendMessage(get+"結果"))
               
            else:
               get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
               line_bot_api.push_message(uid,TextSendMessage(get+"結果"))
               
         return 0
@@ -98,10 +108,15 @@ def handle_message(event):
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message1(event):
+    """
     #取得顧客資訊
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id #使用者ID
     usespeak=str(event.message.text) #使用者講的話
+    """
+    
+    usespeak=getuser()
+    
     if re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         data=mongodb.show_user_stock_fountion()
         
@@ -120,12 +135,10 @@ def handle_message1(event):
         
            if getstock< price:
               get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
               line_bot_api.push_message(uid, TextSendMessage(get+"結果"))
               
            else:
               get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
               line_bot_api.push_message(uid,TextSendMessage(get+"結果"))
               
         return 0
