@@ -63,6 +63,44 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
     
+    
+    elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
+        
+        data = mongodb.show_user_stock_fountion()
+
+        stock_price=[]
+        
+        for i in data:
+              stock=i['stock']
+              bs=i['bs']
+              price=i['price']
+              stock_price.append(stock)
+              
+        if usespeak[0:4] in stock_price:              
+            url = 'https://tw.stock.yahoo.com/q/q?s=' + usespeak[0:4] 
+            list_req = requests.get(url)
+            soup = BeautifulSoup(list_req.content, "html.parser")
+            tables=soup.find_all('table')[1] #裡面所有文字內容
+            tds=tables.find_all("td")[3]
+            getstock= tds.find('b').text
+            getstock=float(getstock)
+                        
+            if getstock< price:
+                get=str(usespeak[0:4]) + '的價格：' + str(getstock)
+                #print(get)
+                line_bot_api.push_message(uid, TextSendMessage(get))
+                              
+            else:
+                get=str(usespeak[0:4]) + '的價格：' + str(getstock)
+                #print(get)
+                line_bot_api.push_message(uid,TextSendMessage(get))
+               
+        else:
+            #print("查無此股票價格！！")
+            line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
+              
+        return 0
+    
     """
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
@@ -95,7 +133,7 @@ def handle_message(event):
         
         """        
         
-
+"""
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message1(event):
     #取得顧客資訊
@@ -140,7 +178,7 @@ def handle_message1(event):
               
         return 0
     
-  
+"""  
 
 #主程式
 import os
