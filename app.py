@@ -11,7 +11,7 @@ from linebot.models import *
 import mongodb
 import re
 
-from __future__ import print_function
+#from __future__ import print_function
 import time
 from linebot import (LineBotApi, WebhookHandler, exceptions)
 from linebot.exceptions import (InvalidSignatureError)
