@@ -63,6 +63,7 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
     
+    
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
         data=mongodb.show_user_stock_fountion()
@@ -92,6 +93,7 @@ def handle_message(event):
               
         return 0
         
+        
 """
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message1(event):
@@ -99,7 +101,7 @@ def handle_message1(event):
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id #使用者ID
     usespeak=str(event.message.text) #使用者講的話
-    if re.match('[0-9]{4}[<>][0-9]價格',usespeak): # 先判斷是否是使用者要用來存股票的
+    if re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         data=mongodb.show_user_stock_fountion()
         
         for i in data:
@@ -118,16 +120,16 @@ def handle_message1(event):
            if getstock< price:
               get=str(stock) + '的價格：' + str(getstock)
               #print(get)
-              line_bot_api.push_message(TextSendMessage(get))
+              line_bot_api.push_message(uid, TextSendMessage(get+"結果"))
+              
            else:
               get=str(stock) + '的價格：' + str(getstock)
               #print(get)
-              line_bot_api.push_message(TextSendMessage(get))
-        
+              line_bot_api.push_message(uid,TextSendMessage(get+"結果"))
+              
         return 0
-"""
     
-  
+ """ 
 
 #主程式
 import os
