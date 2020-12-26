@@ -25,7 +25,7 @@ handler = WebhookHandler('1c771de5f787f511840d0f1402d12b47')
 #開始啟用時的預設對話
 line_bot_api.push_message('U0db823667b9edd2dfea67e380d87cf41', TextSendMessage(text='歡迎使用股市小助手！！'))
 
-def getuser():
+def getuser(event):
     #取得顧客資訊
     profile = line_bot_api.get_profile(event.source.user_id)
     uid = profile.user_id #使用者ID
@@ -62,7 +62,7 @@ def handle_message(event):
     usespeak=str(event.message.text) #使用者講的話
     """
     
-    usespeak=getuser()
+    usespeak=getuser(event)
     
     if re.match('[0-9]{4}[<>][0-9]',usespeak): # 先判斷是否是使用者要用來存股票的
         mongodb.write_user_stock_fountion(stock=usespeak[0:4], bs=usespeak[4:5], price=usespeak[5:])
@@ -115,7 +115,7 @@ def handle_message1(event):
     usespeak=str(event.message.text) #使用者講的話
     """
     
-    usespeak=getuser()
+    usespeak=getuser(event)
     
     if re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         data=mongodb.show_user_stock_fountion()
