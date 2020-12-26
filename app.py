@@ -130,8 +130,9 @@ def handle_message1(event):
                   get=str(stock) + '的價格：' + str(getstock)
                   #print(get)
                   line_bot_api.push_message(uid,TextSendMessage(get))
-            else:
-                  line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
+           
+           else:
+               line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
               
         return 0
     
