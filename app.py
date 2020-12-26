@@ -10,6 +10,8 @@ from linebot.exceptions import (
 from linebot.models import *
 import mongodb
 import re
+import requests
+from bs4 import BeautifulSoup
 
 
 app = Flask(__name__)
