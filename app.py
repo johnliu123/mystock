@@ -63,7 +63,7 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
     
-    """
+    
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
         data=mongodb.show_user_stock_fountion()
@@ -92,7 +92,7 @@ def handle_message(event):
               line_bot_api.push_message(uid,TextSendMessage(get+"結果"))
               
         return 0
-        """
+        
         
         
 """
