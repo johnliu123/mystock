@@ -84,16 +84,9 @@ def handle_message(event):
             tds=tables.find_all("td")[3]
             getstock= tds.find('b').text
             getstock=float(getstock)
-                        
-            if getstock< price:
-                get=str(usespeak[0:4]) + '的價格：' + str(getstock)
-                #print(get)
-                line_bot_api.push_message(uid, TextSendMessage(get))
-                              
-            else:
-                get=str(usespeak[0:4]) + '的價格：' + str(getstock)
-                #print(get)
-                line_bot_api.push_message(uid,TextSendMessage(get))
+            get=str(usespeak[0:4]) + '的價格：' + str(getstock)
+            line_bot_api.push_message(uid, TextSendMessage(get))
+
                
         else:
             #print("查無此股票價格！！")
@@ -161,16 +154,9 @@ def handle_message1(event):
             tds=tables.find_all("td")[3]
             getstock= tds.find('b').text
             getstock=float(getstock)
-                        
-            if getstock< price:
-                get=str(usespeak[0:4]) + '的價格：' + str(getstock)
-                #print(get)
-                line_bot_api.push_message(uid, TextSendMessage(get))
-                              
-            else:
-                get=str(usespeak[0:4]) + '的價格：' + str(getstock)
-                #print(get)
-                line_bot_api.push_message(uid,TextSendMessage(get))
+            get=str(usespeak[0:4]) + '的價格：' + str(getstock)
+            line_bot_api.push_message(uid, TextSendMessage(get))
+
                
         else:
             #print("查無此股票價格！！")
