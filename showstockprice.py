@@ -37,7 +37,7 @@ def job():
         url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
         list_req = requests.get(url)
         
-        soup = BeautifulSoup(list_req.content, "html.parser")
+        soup = BeautifulSoup(list_req.text, "html.parser")
         tables=soup.find_all('table')[1] #裡面所有文字內容
         table1=soup.find_all('table')[2]
         a=table1.find_all("a")[0].text[4:]#股票名稱
