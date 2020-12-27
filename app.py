@@ -63,6 +63,7 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
     
+    """
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
         data = mongodb.show_user_stock_fountion()
@@ -92,9 +93,10 @@ def handle_message(event):
             line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
               
         return 0
+    """
         
  
-"""
+
 #即時抓價格    
 def handle_message_price(event):
     
@@ -139,10 +141,10 @@ while True:
     schedule.run_pending()
     #time.sleep(1)
     
-"""    
     
     
-    """ 可執行的程式
+    
+""" 可執行的程式
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
         data = mongodb.show_user_stock_fountion()
@@ -172,7 +174,7 @@ while True:
             line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
               
         return 0
-    """
+"""
     
 
        
