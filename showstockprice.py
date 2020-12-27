@@ -39,6 +39,8 @@ def job():
         
         soup = BeautifulSoup(list_req.content, "html.parser")
         tables=soup.find_all('table')[1] #裡面所有文字內容
+        table1=soup.find_all('table')[2]
+        a=table1.find_all("a")[0].text[4:]#股票名稱
         tds=tables.find_all("td")[3]
         getstock= tds.find('b').text
         
@@ -46,11 +48,11 @@ def job():
         if float(getstock):
             if bs == '<':
                 if float(getstock) < price:
-                    get=stock + '的價格：' + getstock
+                    get=stock+a+ ' 的價格：' + getstock
                     line_bot_api.push_message(yourid, TextSendMessage(text=get))
             else:
                 if float(getstock) > price:
-                    get=stock + '的價格：' + getstock
+                    get=stock+a+ ' 的價格：' + getstock
                     line_bot_api.push_message(yourid, TextSendMessage(text=get))
         else:
             line_bot_api.push_message(yourid, TextSendMessage(text='這個有問題'))

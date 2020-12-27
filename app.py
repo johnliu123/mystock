@@ -81,10 +81,12 @@ def handle_message(event):
             list_req = requests.get(url)
             soup = BeautifulSoup(list_req.content, "html.parser")
             tables=soup.find_all('table')[1] #裡面所有文字內容
+            table1=soup.find_all('table')[2]
+            a=table1.find_all("a")[0].text[4:]#股票名稱
             tds=tables.find_all("td")[3]
             getstock= tds.find('b').text
             getstock=float(getstock)
-            get=str(usespeak[0:4]) + '的價格：' + str(getstock)
+            get=str(usespeak[0:4])+a+' 的價格：' + str(getstock)
             line_bot_api.push_message(uid, TextSendMessage(get))
 
                
