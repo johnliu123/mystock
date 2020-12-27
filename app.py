@@ -12,7 +12,7 @@ import mongodb
 import re
 import requests
 from bs4 import BeautifulSoup
-
+import schedule
 
 app = Flask(__name__)
 
@@ -63,7 +63,48 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
     
+#即時抓價格    
+def handle_message_price(event):
+    if re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
+        data = mongodb.show_user_stock_fountion()
+
+        stock_price=[]
+        
+        for i in data:
+              stock=i['stock']
+              bs=i['bs']
+              price=i['price']
+              stock_price.append(stock)
+              
+        if usespeak[0:4] in stock_price:              
+            url = 'https://tw.stock.yahoo.com/q/q?s=' + usespeak[0:4] 
+            list_req = requests.get(url)
+            soup = BeautifulSoup(list_req.content, "html.parser")
+            tables=soup.find_all('table')[1] #裡面所有文字內容
+            tds=tables.find_all("td")[3]
+            getstock= tds.find('b').text
+            getstock=float(getstock)
+            get=str(usespeak[0:4]) + '的價格：' + str(getstock)
+            line_bot_api.push_message(uid, TextSendMessage(get))
+
+               
+        else:
+            #print("查無此股票價格！！")
+            line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
+              
+        return 0
     
+    schedule.every(10).seconds.do(job) #每10秒執行一次
+
+# 無窮迴圈
+while True: 
+    schedule.run_pending()
+    #time.sleep(1)
+    
+    
+    
+    
+    """
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
         data = mongodb.show_user_stock_fountion()
@@ -93,38 +134,10 @@ def handle_message(event):
             line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
               
         return 0
-    
     """
-    elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
-        
-        data=mongodb.show_user_stock_fountion()
-        
-        for i in data:
-           stock=i['stock']
-           bs=i['bs']
-           price=i['price']
-                
-           url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
-           list_req = requests.get(url)
-           soup = BeautifulSoup(list_req.content, "html.parser")
-           tables=soup.find_all('table')[1] #裡面所有文字內容
-           tds=tables.find_all("td")[3]
-           getstock= tds.find('b').text
-           getstock=float(getstock)
-        
-           if getstock< price:
-              get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
-              line_bot_api.push_message(uid, TextSendMessage(get+"結果"))
-              
-           else:
-              get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
-              line_bot_api.push_message(uid,TextSendMessage(get+"結果"))
-              
-        return 0
-        
-        """        
+    
+
+       
         
 """
 @handler.add(MessageEvent, message=TextMessage)
