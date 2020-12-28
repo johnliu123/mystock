@@ -54,27 +54,27 @@ def job():
                         params = {"message": get}
                         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
-                        print(get)
+                        #print(get)
                 else:
                     if float(getstock) > price:
                         get=stock+a+ ' 的價格：'+str(getstock)+' 已高於您設定的價格'+str(price)+'元，'+'即可賣出！！'
                         params = {"message": get}
                         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
-                        print(get)
+                        #print(get)
             else:
                 params = {"message": get}
                 r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
-                print("有問題")
+                #print("有問題")
         
         except IndexError:
             pass
         
-
-schedule.every(10).seconds.do(job) #每10秒執行一次
-
-# 無窮迴圈
-while True: 
-    schedule.run_pending()
+if __name__ == '__main__':
+    schedule.every(10).seconds.do(job) #每10秒執行一次
+    
+    # 無窮迴圈
+    while True: 
+        schedule.run_pending()
 
