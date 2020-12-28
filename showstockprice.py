@@ -37,25 +37,36 @@ def job():
         url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
         list_req = requests.get(url)
         
-        soup = BeautifulSoup(list_req.text, "html.parser")
-        tables=soup.find_all('table')[1] #裡面所有文字內容
-        table1=soup.find_all('table')[2]
-        a=table1.find_all("a")[0].text[4:]#股票名稱
-        tds=tables.find_all("td")[3]
-        getstock= tds.find('b').text
+        try:
+            #要使用try catch 不然爬蟲更新價格時有時還沒有更新會抓不到資料會有error
+            #要使用list_req.text 不是使用list_req.content不然會有亂碼
+            soup = BeautifulSoup(list_req.text, "html.parser")
+            tables=soup.find_all('table')[1] #裡面所有文字內容
+            table1=soup.find_all('table')[2]
+            a=table1.find_all("a")[0].text[4:]#股票名稱
+            tds=tables.find_all("td")[3]
+            getstock= tds.find('b').text
         
-        
-        if float(getstock):
-            if bs == '<':
-                if float(getstock) < price:
-                    get=stock+a+ ' 的價格：' + getstock
-                    line_bot_api.push_message(yourid, TextSendMessage(text=get))
+            if float(getstock):
+                if bs == '<':
+                    if float(getstock) < price:
+                        get=stock+a+ ' 的價格：'+str(getstock)+' 已低於您設定的價格'+str(price)+'元，'+'即可買入！！'
+                        line_bot_api.push_message(yourid, TextSendMessage(text=get))
+                        #print(get)
+                else:
+                    if float(getstock) > price:
+                        
+                        get=stock+a+ ' 的價格：'+str(getstock)+' 已高於您設定的價格'+str(price)+'元，'+'即可賣出！！'
+                        line_bot_api.push_message(yourid, TextSendMessage(text=get))
+                        #print(get)
             else:
-                if float(getstock) > price:
-                    get=stock+a+ ' 的價格：' + getstock
-                    line_bot_api.push_message(yourid, TextSendMessage(text=get))
-        else:
-            line_bot_api.push_message(yourid, TextSendMessage(text='這個有問題'))
+                line_bot_api.push_message(yourid, TextSendMessage(text='這個有問題'))
+                #print("有問題")
+        
+        except IndexError:
+            pass
+        
+        
 
 schedule.every(10).seconds.do(job) #每10秒執行一次
 
