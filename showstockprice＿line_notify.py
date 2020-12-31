@@ -15,16 +15,33 @@ import requests
 from bs4 import BeautifulSoup
 import mongodb
 
+import random
+from fake_useragent import UserAgent
 
 
 #line message api 通知設定
 # 必須放上自己的 Token
 token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
 
+user_agent = UserAgent()
+    
 headers = {
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
+    
+    "Authorization": "Bearer " + token,
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+    "Accept-Encoding": "gzip, deflate, br", 
+    "Accept-Language": "zh-TW,zh;q=0.9", 
+    #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
+    "Sec-Fetch-Dest": "document", 
+    "Sec-Fetch-Mode": "navigate", 
+    "Sec-Fetch-Site": "none", 
+    "Upgrade-Insecure-Requests": "1", 
+    #隨機設定 使用者代理(User-Agent)
+    "User-Agent":user_agent.random,
+    #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
+    "Referer": "https://www.google.com/"
+}
 
 
 def job():
@@ -38,7 +55,7 @@ def job():
         
         #yahoo的 要使用list_req.text
         url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
-        list_req = requests.get(url)
+        list_req = requests.get(url, headers = headers)
         
         try:
             #要使用list_req.text 不是使用list_req.content不然會有亂碼
@@ -79,4 +96,8 @@ schedule.every(10).seconds.do(job) #每10秒執行一次
 # 無窮迴圈
 while True: 
     schedule.run_pending()
-
+    #設定隨機的延遲時間 避免相同的request時間
+    delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
+    #delay_choices = [1,2,3]  #延遲的秒數
+    delay = random.choice(delay_choices)  #隨機選取秒數
+    time.sleep(delay)  #延遲
