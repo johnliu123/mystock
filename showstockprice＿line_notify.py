@@ -14,7 +14,7 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 import mongodb
-from apscheduler.schedulers.blocking import BlockingScheduler
+
 
 
 #line message api 通知設定
@@ -26,6 +26,7 @@ headers = {
         "Content-Type": "application/x-www-form-urlencoded"
     }
 
+
 def job():
     
     data = mongodb.show_user_stock_fountion()
@@ -35,6 +36,7 @@ def job():
         bs=i['bs']
         price=i['price']
         
+        #yahoo的 要使用list_req.text
         url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
         list_req = requests.get(url)
         

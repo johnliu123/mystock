@@ -17,7 +17,7 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 import mongodb
-from apscheduler.schedulers.blocking import BlockingScheduler
+
 
 
 #line message api 設定
@@ -34,6 +34,7 @@ def job():
         bs=i['bs']
         price=i['price']
         
+        #yahoo的 要使用list_req.text 
         url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
         list_req = requests.get(url)
         
@@ -51,17 +52,17 @@ def job():
                 if bs == '<':
                     if float(getstock) < price:
                         get=stock+a+ ' 的價格：'+str(getstock)+' 已低於您設定的價格'+str(price)+'元，'+'即可買入！！'
-                        line_bot_api.push_message(yourid, TextSendMessage(text=get))
-                        #print(get)
+                        #line_bot_api.push_message(yourid, TextSendMessage(text=get))
+                        print(get)
                 else:
                     if float(getstock) > price:
                         
                         get=stock+a+ ' 的價格：'+str(getstock)+' 已高於您設定的價格'+str(price)+'元，'+'即可賣出！！'
-                        line_bot_api.push_message(yourid, TextSendMessage(text=get))
-                        #print(get)
+                        #line_bot_api.push_message(yourid, TextSendMessage(text=get))
+                        print(get)
             else:
-                line_bot_api.push_message(yourid, TextSendMessage(text='這個有問題'))
-                #print("有問題")
+                #line_bot_api.push_message(yourid, TextSendMessage(text='這個有問題'))
+                print("有問題")
         
         except IndexError:
             pass
