@@ -104,11 +104,16 @@ def handle_message(event):
         line_bot_api.push_message(uid,TextSendMessage("請輸入你要的選股策略:"))
         usespeakStrategy=str(event.message.text) #使用者講的話
         
+        if event.message.text == "文字":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+        
+        """
         if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
             #line_bot_api.push_message(uid,TextSendMessage("測試"))
             #line_bot_api.reply_message(event.reply_token,"測試")
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="測試"))
             #stock_Strategy(usespeakStrategy)
+        """
         
         
         return 0
