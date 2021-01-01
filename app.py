@@ -13,6 +13,9 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+def stock_Strategy(usespeakStrategy):
+    line_bot_api.push_message(uid,TextSendMessage("測試成功"))
+
 
 app = Flask(__name__)
 
@@ -95,6 +98,16 @@ def handle_message(event):
             line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
               
         return 0
+    
+    
+    elif re.match('買股票',usespeak): # 刪除存在資料庫裡面的股票
+        line_bot_api.push_message(uid,TextSendMessage("請輸入你要的選股策略:"))
+        usespeakStrategy=str(event.message.text) #使用者講的話
+        stock_Strategy(usespeakStrategy)
+        
+        
+        return 0
+    
     
     """
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
