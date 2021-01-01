@@ -103,7 +103,8 @@ def handle_message(event):
     elif re.match('買股票',usespeak): # 刪除存在資料庫裡面的股票
         line_bot_api.push_message(uid,TextSendMessage("請輸入你要的選股策略:"))
         usespeakStrategy=str(event.message.text) #使用者講的話
-        stock_Strategy(usespeakStrategy)
+        line_bot_api.push_message(uid,TextSendMessage("測試"))
+        #stock_Strategy(usespeakStrategy)
         
         
         return 0
