@@ -146,9 +146,11 @@ def handle_message(event):
                     )
         
         
+        """
         # event.postback.data 取得使用者點選回傳值的結果
         area = event.postback.data
         line_bot_api.reply_message(uid,TextSendMessage(text="您選擇的是"+area))
+        """
         
         """
         if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
@@ -193,8 +195,16 @@ def handle_message(event):
         return 0
         
         """        
-        
-"""
+      
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    # event.postback.data 取得使用者點選回傳值的結果
+    if event.postback.data == '本益比':
+        line_bot_api.reply_message(uid,TextSendMessage(text="您選擇的是"+area))
+    
+
+
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message1(event):
     #取得顧客資訊
