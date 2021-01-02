@@ -147,6 +147,7 @@ def handle_message(event):
         
         
         
+        
         if event.postback.data == "本益比":
             print(event.postback.data)
             
@@ -191,13 +192,13 @@ def handle_message(event):
           
          """ 
             
-            """
+        """
             if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
                 #line_bot_api.push_message(uid,TextSendMessage("測試"))
                 #line_bot_api.reply_message(event.reply_token,"測試")
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="測試"))
                 #stock_Strategy(usespeakStrategy)
-            """
+        """
         
         
         return 0
