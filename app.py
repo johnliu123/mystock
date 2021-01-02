@@ -146,7 +146,8 @@ def handle_message(event):
                     )
         
         
-        
+        if event.message.text=="1.水泥工業":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
         
             
         """
@@ -202,8 +203,10 @@ def handle_postback(event):
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入類股代號："))
         
+        """
         if event.message.text=="1.水泥工業":
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
+        """
         
         """
         # 回復傳入的訊息文字
