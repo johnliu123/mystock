@@ -466,18 +466,7 @@ def handle_postback(event):
                             ),
                     
                 ]
-            ),
-            CarouselColumn(
-                title='請輸入類股代號：',
-                text='請選擇產業類股',
-                actions=[
-                    PostbackAction(
-                            label='34.農業科技業',
-                            text='34.農業科技業',
-                            data='農業科技業'
-                            ),
-                ]
-            )    
+            )   
         ]
     )
     )
