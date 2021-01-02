@@ -198,8 +198,46 @@ def handle_message(event):
 def handle_postback(event):
     # event.postback.data 取得使用者點選回傳值的結果
     if event.postback.data == '本益比':
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        #result = event.postback.data
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(  
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='請輸入類股代號：',
+                                text='請選擇產業類股',
+                                actions=[
+                                    PostbackAction(
+                                        label='1.水泥工業',
+                                        text='1.水泥工業',
+                                        data='水泥工業'
+                                    ),
+                                    PostbackAction(
+                                        label='2.食品工業',
+                                        text='2.食品工業',
+                                        data='食品工業'
+                                    ),
+                                    PostbackAction(
+                                        label='3.塑膠工業',
+                                        text='3.塑膠工業',
+                                        data='塑膠工業'
+                                    ),
+                                    PostbackAction(
+                                        label='4.紡織纖維',
+                                        text='4.紡織纖維',
+                                        data='紡織纖維'
+                                    ),
+                                    PostbackAction(
+                                        label='5.電機機械',
+                                        text='5.電機機械',
+                                        data='電機機械'
+                                    )
+                                ]
+                            )
+                        )
+                    )
     
     elif event.postback.data == '殖利率':
         result = event.postback.data
