@@ -7,11 +7,22 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-from linebot.models import *
+
 import mongodb
 import re
 import requests
 from bs4 import BeautifulSoup
+
+
+from linebot.models import (
+    MessageEvent,
+    TextSendMessage,
+    TemplateSendMessage,
+    ButtonsTemplate,
+    MessageTemplateAction,
+    PostbackEvent,
+    PostbackTemplateAction
+)
 
 def stock_Strategy(usespeakStrategy):
     line_bot_api.push_message(uid,TextSendMessage("測試成功"))
