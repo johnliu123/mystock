@@ -146,9 +146,10 @@ def handle_message(event):
                     )
         
         
-        if isinstance(PostbackEvent):
+        if isinstance(event,PostbackEvent):
             
             if event.postback.data == "本益比":
+                print(event.postback.data)
             
                 # event.postback.data 取得使用者點選回傳值的結果
                 result = event.postback.data
