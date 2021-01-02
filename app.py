@@ -442,6 +442,11 @@ def handle_postback(event):
                             text='30.其他業',
                             data='其他業'
                             ),
+                    PostbackAction(
+                            label='34.農業科技業',
+                            text='34.農業科技業',
+                            data='農業科技業'
+                            ),
                     
                 ]
             ) 
