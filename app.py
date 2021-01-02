@@ -194,7 +194,7 @@ def handle_message(event):
         
         """        
 
-
+"""
 #訊息傳遞區塊
 #reply_message 使用者輸入訊息 line會回覆相同訊息 
 @handler.add(MessageEvent, message=TextMessage)
@@ -206,7 +206,7 @@ def handle_message2(event):
         
     return 0
 
-
+"""
       
 @handler.add(PostbackEvent)
 def handle_postback(event):
@@ -214,14 +214,14 @@ def handle_postback(event):
     if event.postback.data == '本益比':
         #result = event.postback.data
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入類股代號："))
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入類股代號："))
         
         """
         if event.message.text=="1.水泥工業":
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
         """
         
-        """
+        
         # 回復傳入的訊息文字
         line_bot_api.reply_message(  
                         event.reply_token,
@@ -255,13 +255,45 @@ def handle_postback(event):
                             )
                         )
                     )
-            """
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(  
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='請輸入類股代號：',
+                                text='請選擇產業類股',
+                                actions=[
+                                    PostbackAction(
+                                        label='5.電機機械',
+                                        text='5.電機機械',
+                                        data='電機機械'
+                                    ),
+                                    PostbackAction(
+                                        label='6.電器電纜',
+                                        text='6.電器電纜',
+                                        data='電器電纜'
+                                    ),
+                                    PostbackAction(
+                                        label='7.生技醫療業',
+                                        text='7.生技醫療業',
+                                        data='生技醫療業'
+                                    ),
+                                    PostbackAction(
+                                        label='8.化學工業',
+                                        text='8.化學工業',
+                                        data='化學工業'
+                                    )
+                                ]
+                            )
+                        )
+                    )
     
     elif event.postback.data == '殖利率':
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
     
-    else:
+    elif event.postback.data == 'EPS':  
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
