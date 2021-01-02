@@ -243,7 +243,7 @@ def handle_postback(event):
     # event.postback.data 取得使用者點選回傳值的結果
     if event.postback.data == '本益比':
         result = event.postback.data
-        line_bot_api.reply_message(uid,TextSendMessage(text="您選擇的是"+result))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
 
 
