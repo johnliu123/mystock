@@ -21,7 +21,8 @@ from linebot.models import (
     ButtonsTemplate,
     MessageTemplateAction,
     PostbackEvent,
-    PostbackTemplateAction
+    PostbackTemplateAction,
+    PostbackAction
 )
 
 def stock_Strategy(usespeakStrategy):
@@ -125,17 +126,17 @@ def handle_message(event):
                                 title='請輸入你要的選股策略:',
                                 text='請選擇選股標的',
                                 actions=[
-                                    PostbackTemplateAction(
+                                    PostbackAction(
                                         label='1.本益比',
                                         text='1.本益比',
                                         data='本益比'
                                     ),
-                                    PostbackTemplateAction(
+                                    PostbackAction(
                                         label='2.殖利率',
                                         text='2.殖利率',
                                         data='殖利率'
                                     ),
-                                    PostbackTemplateAction(
+                                    PostbackAction(
                                         label='3.EPS',
                                         text='3.EPS',
                                         data='EPS'
@@ -147,7 +148,7 @@ def handle_message(event):
         
         
         
-        
+        """
         if event.postback.data == "本益比":
             print(event.postback.data)
             
@@ -166,7 +167,7 @@ def handle_message(event):
             result = event.postback.data
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
-        
+        """
         
         
         """
@@ -236,8 +237,8 @@ def handle_message(event):
         
         """        
 
-"""      
-@handler.add(MessageEvent,PostbackEvent)
+      
+@handler.add(PostbackEvent)
 def handle_postback(event):
     # event.postback.data 取得使用者點選回傳值的結果
     if event.postback.data == '本益比':
@@ -246,7 +247,7 @@ def handle_postback(event):
 
 
 
-
+"""
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message1(event):
     #取得顧客資訊
