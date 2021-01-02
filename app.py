@@ -334,8 +334,73 @@ def handle_postback(event):
                             ),
                     
                 ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='16.電子零組件業',
+                            text='16.電子零組件業',
+                            data='電子零組件業'
+                            ),
+                    PostbackAction(
+                            label='17.其他電子業',
+                            text='17.其他電子業',
+                            data='其他電子業'
+                            ),
+                    PostbackAction(
+                            label='18.通信網路業',
+                            text='18.通信網路業',
+                            data='通信網路業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='19.資訊服務業',
+                            text='19.資訊服務業',
+                            data='資訊服務業'
+                            ),
+                    PostbackAction(
+                            label='20.建材營造業',
+                            text='20.建材營造業',
+                            data='建材營造業'
+                            ),
+                    PostbackAction(
+                            label='21.航運業',
+                            text='21.航運業',
+                            data='航運業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='22.觀光事業',
+                            text='22.觀光事業',
+                            data='觀光事業'
+                            ),
+                    PostbackAction(
+                            label='23.銀行業',
+                            text='23.銀行業',
+                            data='銀行業'
+                            ),
+                    PostbackAction(
+                            label='24.保險業',
+                            text='24.保險業',
+                            data='保險業'
+                            ),
+                    
+                ]
             )
-            
             
         ]
     )
