@@ -286,6 +286,7 @@ def handle_postback(event):
                             data='生技醫療業'
                             ),
                     
+                ]
             )
         ]
     )
