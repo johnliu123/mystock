@@ -220,30 +220,12 @@ def handle_postback(event):
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入類股代號："))
         
-        """
-        if event.message.text=="1.水泥工業":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
-        """
-        
-        """
-        carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='hoge1', title='fuga1', actions=[
-                URIAction(label='Go to line.me', uri='https://line.me'),
-                PostbackAction(label='ping', data='ping')
-            ]),
-            CarouselColumn(text='hoge2', title='fuga2', actions=[
-                PostbackAction(label='ping with text', data='ping', text='ping'),
-                MessageAction(label='Translate Rice', text='米')
-            ]),
-        ])
-        """
         
         Carousel_template = TemplateSendMessage(
         alt_text='Carousel template',
         template=CarouselTemplate(
         columns=[
             CarouselColumn(
-                #thumbnail_image_url='顯示在開頭的大圖片網址',
                 title='請輸入類股代號：',
                 text='請選擇產業類股',
                 actions=[
@@ -266,10 +248,14 @@ def handle_postback(event):
                 ]
             ),
             CarouselColumn(
-                #thumbnail_image_url='顯示在開頭的大圖片網址',
                 title='請輸入類股代號：',
                 text='請選擇產業類股',
                 actions=[
+                    PostbackAction(
+                            label='4.紡織纖維',
+                            text='4.紡織纖維',
+                            data='紡織纖維'
+                            ),
                     PostbackAction(
                             label='5.電機機械',
                             text='5.電機機械',
@@ -280,14 +266,219 @@ def handle_postback(event):
                             text='6.電器電纜',
                             data='電器電纜'
                             ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
                     PostbackAction(
                             label='7.生技醫療業',
                             text='7.生技醫療業',
                             data='生技醫療業'
                             ),
+                    PostbackAction(
+                            label='8.化學工業',
+                            text='8.化學工業',
+                            data='化學工業'
+                            ),
+                    PostbackAction(
+                            label='9.玻璃陶瓷',
+                            text='9.玻璃陶瓷',
+                            data='玻璃陶瓷'
+                            ),
                     
                 ]
-            )
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='10.造紙工業',
+                            text='10.造紙工業',
+                            data='造紙工業'
+                            ),
+                    PostbackAction(
+                            label='11.鋼鐵工業',
+                            text='11.鋼鐵工業',
+                            data='鋼鐵工業'
+                            ),
+                    PostbackAction(
+                            label='12.橡膠工業',
+                            text='12.橡膠工業',
+                            data='橡膠工業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='13.汽車工業',
+                            text='13.汽車工業',
+                            data='汽車工業'
+                            ),
+                    PostbackAction(
+                            label='14.電腦及週邊設備業',
+                            text='14.電腦及週邊設備業',
+                            data='電腦及週邊設備業'
+                            ),
+                    PostbackAction(
+                            label='15.半導體業',
+                            text='15.半導體業',
+                            data='半導體業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='16.電子零組件業',
+                            text='16.電子零組件業',
+                            data='電子零組件業'
+                            ),
+                    PostbackAction(
+                            label='17.其他電子業',
+                            text='17.其他電子業',
+                            data='其他電子業'
+                            ),
+                    PostbackAction(
+                            label='18.通信網路業',
+                            text='18.通信網路業',
+                            data='通信網路業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='19.資訊服務業',
+                            text='19.資訊服務業',
+                            data='資訊服務業'
+                            ),
+                    PostbackAction(
+                            label='20.建材營造業',
+                            text='20.建材營造業',
+                            data='建材營造業'
+                            ),
+                    PostbackAction(
+                            label='21.航運業',
+                            text='21.航運業',
+                            data='航運業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='22.觀光事業',
+                            text='22.觀光事業',
+                            data='觀光事業'
+                            ),
+                    PostbackAction(
+                            label='23.銀行業',
+                            text='23.銀行業',
+                            data='銀行業'
+                            ),
+                    PostbackAction(
+                            label='24.保險業',
+                            text='24.保險業',
+                            data='保險業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='25.金控業',
+                            text='25.金控業',
+                            data='金控業'
+                            ),
+                    PostbackAction(
+                            label='26.貿易百貨業',
+                            text='26.貿易百貨業',
+                            data='貿易百貨業'
+                            ),
+                    PostbackAction(
+                            label='27.光電業',
+                            text='27.光電業',
+                            data='光電業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='28.電子通路業',
+                            text='28.電子通路業',
+                            data='電子通路業'
+                            ),
+                    PostbackAction(
+                            label='29.證券業',
+                            text='29.證券業',
+                            data='證券業'
+                            ),
+                    PostbackAction(
+                            label='30.其他業',
+                            text='30.其他業',
+                            data='其他業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='31.油電燃氣業',
+                            text='31.油電燃氣業',
+                            data='油電燃氣業'
+                            ),
+                    PostbackAction(
+                            label='32.電子商務',
+                            text='32.電子商務',
+                            data='電子商務'
+                            ),
+                    PostbackAction(
+                            label='33.文化創意業',
+                            text='33.文化創意業',
+                            data='文化創意業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='34.農業科技業',
+                            text='34.農業科技業',
+                            data='農業科技業'
+                            ),
+                    
+                ]
+            ),
         ]
     )
     )
