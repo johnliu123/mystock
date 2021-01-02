@@ -22,7 +22,8 @@ from linebot.models import (
     MessageTemplateAction,
     PostbackEvent,
     PostbackAction,
-    CarouselColumn
+    CarouselColumn,
+    CarouselTemplate
 )
 
 def stock_Strategy(usespeakStrategy):
