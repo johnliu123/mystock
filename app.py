@@ -146,10 +146,12 @@ def handle_message(event):
                     )
         
         
+        """
         if event.message.text=="1.水泥工業":
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
         
-            
+        """
+        
         """
             if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
                 #line_bot_api.push_message(uid,TextSendMessage("測試"))
