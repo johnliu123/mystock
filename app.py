@@ -102,12 +102,37 @@ def handle_message(event):
     
     elif re.match('買股票',usespeak): # 刪除存在資料庫裡面的股票
         #line_bot_api.push_message(uid,TextSendMessage("請輸入你要的選股策略:"))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入你要的選股策略:"))
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入你要的選股策略:"))
         #usespeakStrategy=str(event.message.text) #使用者講的話
         
-        if re.match('test',event.message.text):
-            #line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(  
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='請輸入你要的選股策略:',
+                                text='請選擇選股標的',
+                                actions=[
+                                    MessageTemplateAction(
+                                        label='1.本益比',
+                                        text='1.本益比'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='2.殖利率',
+                                        text='2.殖利率'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='3.EPS',
+                                        text='3.EPS'
+                                    )
+                                ]
+                            )
+                        )
+                    )
+        
+        
+        
         
         """
         if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
