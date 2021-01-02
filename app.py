@@ -400,8 +400,86 @@ def handle_postback(event):
                             ),
                     
                 ]
-            )
+            ),
             
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='25.金控業',
+                            text='25.金控業',
+                            data='金控業'
+                            ),
+                    PostbackAction(
+                            label='26.貿易百貨業',
+                            text='26.貿易百貨業',
+                            data='貿易百貨業'
+                            ),
+                    PostbackAction(
+                            label='27.光電業',
+                            text='27.光電業',
+                            data='光電業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='28.電子通路業',
+                            text='28.電子通路業',
+                            data='電子通路業'
+                            ),
+                    PostbackAction(
+                            label='29.證券業',
+                            text='29.證券業',
+                            data='證券業'
+                            ),
+                    PostbackAction(
+                            label='30.其他業',
+                            text='30.其他業',
+                            data='其他業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='31.油電燃氣業',
+                            text='31.油電燃氣業',
+                            data='油電燃氣業'
+                            ),
+                    PostbackAction(
+                            label='32.電子商務',
+                            text='32.電子商務',
+                            data='電子商務'
+                            ),
+                    PostbackAction(
+                            label='33.文化創意業',
+                            text='33.文化創意業',
+                            data='文化創意業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='34.農業科技業',
+                            text='34.農業科技業',
+                            data='農業科技業'
+                            ),
+                    
+                ]
+            )
         ]
     )
     )
