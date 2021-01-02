@@ -7,7 +7,7 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-
+from linebot.models import *
 import mongodb
 import re
 import requests
