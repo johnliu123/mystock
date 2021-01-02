@@ -262,11 +262,7 @@ def handle_postback(event):
                             text='3.塑膠工業',
                             data='塑膠工業'
                             ),
-                    PostbackAction(
-                            label='4.紡織纖維',
-                            text='4.紡織纖維',
-                            data='紡織纖維'
-                    )
+                    
                 ]
             ),
             CarouselColumn(
@@ -289,12 +285,7 @@ def handle_postback(event):
                             text='7.生技醫療業',
                             data='生技醫療業'
                             ),
-                    PostbackAction(
-                            label='8.化學工業',
-                            text='8.化學工業',
-                            data='化學工業'
-                            )
-                ]
+                    
             )
         ]
     )
