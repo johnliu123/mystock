@@ -194,6 +194,19 @@ def handle_message(event):
         
         """        
 
+
+#訊息傳遞區塊
+#reply_message 使用者輸入訊息 line會回覆相同訊息 
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message2(event):
+    
+    if event.message.text=="1.水泥工業":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
+        
+        
+    return 0
+
+
       
 @handler.add(PostbackEvent)
 def handle_postback(event):
