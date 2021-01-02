@@ -313,6 +313,8 @@ def handle_postback(event):
                     
                 ]
             ),
+            
+            """
             CarouselColumn(
                 title='請輸入類股代號：',
                 text='請選擇產業類股',
@@ -479,6 +481,7 @@ def handle_postback(event):
                     
                 ]
             ),
+            """
         ]
     )
     )
