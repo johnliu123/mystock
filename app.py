@@ -200,6 +200,12 @@ def handle_postback(event):
     if event.postback.data == '本益比':
         #result = event.postback.data
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入類股代號："))
+        
+        if event.message.text=="1.水泥工業":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
+        
+        """
         # 回復傳入的訊息文字
         line_bot_api.reply_message(  
                         event.reply_token,
@@ -233,6 +239,7 @@ def handle_postback(event):
                             )
                         )
                     )
+            """
     
     elif event.postback.data == '殖利率':
         result = event.postback.data
@@ -241,6 +248,8 @@ def handle_postback(event):
     else:
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+
+
 
 
 
