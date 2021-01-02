@@ -442,11 +442,6 @@ def handle_postback(event):
                             text='30.其他業',
                             data='其他業'
                             ),
-                    PostbackAction(
-                            label='34.農業科技業',
-                            text='34.農業科技業',
-                            data='農業科技業'
-                            ),
                     
                 ]
             ) 
@@ -454,6 +449,49 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+        
+        
+        Carousel_template1 = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='31.油電燃氣業',
+                            text='31.油電燃氣業',
+                            data='油電燃氣業'
+                            ),
+                    PostbackAction(
+                            label='32.電子商務',
+                            text='32.電子商務',
+                            data='電子商務'
+                            ),
+                    PostbackAction(
+                            label='33.文化創意業',
+                            text='33.文化創意業',
+                            data='文化創意業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='34.農業科技業',
+                            text='34.農業科技業',
+                            data='農業科技業'
+                            ),
+                ]
+            ) 
+        ]
+    )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template1)
         
         """
         # 回復傳入的訊息文字
