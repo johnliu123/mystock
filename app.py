@@ -228,11 +228,6 @@ def handle_postback(event):
                                         label='4.紡織纖維',
                                         text='4.紡織纖維',
                                         data='紡織纖維'
-                                    ),
-                                    PostbackAction(
-                                        label='5.電機機械',
-                                        text='5.電機機械',
-                                        data='電機機械'
                                     )
                                 ]
                             )
