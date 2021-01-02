@@ -132,7 +132,9 @@ def handle_message(event):
                     )
         
         
-        
+        # event.postback.data 取得使用者點選回傳值的結果
+        area = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+area))
         
         """
         if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
