@@ -146,6 +146,29 @@ def handle_message(event):
                     )
         
         
+        
+        if event.postback.data == "本益比":
+            print(event.postback.data)
+            
+            # event.postback.data 取得使用者點選回傳值的結果
+            result = event.postback.data
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+           
+        elif event.postback.data == "殖利率":
+            
+            # event.postback.data 取得使用者點選回傳值的結果
+            result = event.postback.data
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    
+        else:
+            # event.postback.data 取得使用者點選回傳值的結果
+            result = event.postback.data
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+
+        
+        
+        
+        """
         if isinstance(event,PostbackEvent):
             
             if event.postback.data == "本益比":
@@ -153,19 +176,20 @@ def handle_message(event):
             
                 # event.postback.data 取得使用者點選回傳值的結果
                 result = event.postback.data
-                line_bot_api.reply_message(uid,TextSendMessage(text="您選擇的是"+result))
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
            
             elif event.postback.data == "殖利率":
             
                 # event.postback.data 取得使用者點選回傳值的結果
                 result = event.postback.data
-                line_bot_api.reply_message(uid,TextSendMessage(text="您選擇的是"+result))
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
     
             else:
                 # event.postback.data 取得使用者點選回傳值的結果
                 result = event.postback.data
-                line_bot_api.reply_message(uid,TextSendMessage(text="您選擇的是"+result))
-            
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+          
+         """ 
             
             """
             if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
