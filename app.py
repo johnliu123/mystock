@@ -149,10 +149,10 @@ def handle_message(event):
                     )
         
         
-        
+        """
         if event.message.text=="1.水泥工業":
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
-        
+        """
         
         
         """
@@ -429,9 +429,9 @@ def handle_postback(event):
                 text='請選擇產業類股',
                 actions=[
                     PostbackAction(
-                            label='28.電子通路業',
-                            text='28.電子通路業',
-                            data='電子通路業'
+                            label='28.電子通路業/29.證券業',
+                            text='28.電子通路業/29.證券業',
+                            data='電子通路業/證券業'
                             ),
                     PostbackAction(
                             label='29.證券業',
@@ -450,8 +450,7 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
-        #line_bot_api.reply_message(event.reply_token,Carousel_template)
-        #,TextSendMessage(text="您選擇的是"+result)
+        
         
         """
         if event.postback.data == '水泥工業':
@@ -585,8 +584,40 @@ def handle_postback(event):
     elif event.postback.data == '水泥工業':  
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    
+    elif event.postback.data == '電子通路業/證券業':  
+        Carousel_template = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='28.電子通路業',
+                            text='28.電子通路業',
+                            data='電子通路業'
+                            ),
+                    PostbackAction(
+                            label='29.證券業',
+                            text='29.證券業',
+                            data='證券業'
+                            ),
+                ]
+            )
+        ]
+    )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
 
-
+    elif event.postback.data == '電子通路業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    
+    elif event.postback.data == '證券業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
 """
 @handler.add(MessageEvent, message=TextMessage)
