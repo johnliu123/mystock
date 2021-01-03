@@ -452,28 +452,28 @@ def handle_postback(event):
         
         if event.postback.data == '其他業/油電燃氣業':
             # 回復傳入的訊息文字
-        line_bot_api.reply_message(  
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='請輸入類股代號：',
-                                text='請選擇產業類股',
-                                actions=[
-                                    PostbackAction(
-                                        label='30.其他業',
-                                        text='30.其他業',
-                                        data='其他業'
-                                    ),
-                                    PostbackAction(
-                                        label='31.油電燃氣業',
-                                        text='31.油電燃氣業',
-                                        data='油電燃氣業'
-                                    )
-                                ]
+            line_bot_api.reply_message(  
+                            event.reply_token,
+                            TemplateSendMessage(
+                                alt_text='Buttons template',
+                                template=ButtonsTemplate(
+                                    title='請輸入類股代號：',
+                                    text='請選擇產業類股',
+                                    actions=[
+                                        PostbackAction(
+                                            label='30.其他業',
+                                            text='30.其他業',
+                                            data='其他業'
+                                        ),
+                                        PostbackAction(
+                                            label='31.油電燃氣業',
+                                            text='31.油電燃氣業',
+                                            data='油電燃氣業'
+                                        )
+                                    ]
+                                )
                             )
                         )
-                    )
         
         """
         # 回復傳入的訊息文字
