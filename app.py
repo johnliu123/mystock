@@ -449,7 +449,9 @@ def handle_postback(event):
         ]
     )
     )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)
+        #line_bot_api.reply_message(event.reply_token,Carousel_template)
+        #line_bot_api.reply_message(event.reply_token,Carousel_template)
+        #,TextSendMessage(text="您選擇的是"+result)
         
         """
         if event.postback.data == '水泥工業':
@@ -580,7 +582,9 @@ def handle_postback(event):
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
-
+    elif event.postback.data == '水泥工業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
 
 
