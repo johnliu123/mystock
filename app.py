@@ -23,8 +23,7 @@ from linebot.models import (
     PostbackEvent,
     PostbackAction,
     CarouselColumn,
-    CarouselTemplate,
-    MessageAction
+    CarouselTemplate
 )
 
 def stock_Strategy(usespeakStrategy):
@@ -128,33 +127,6 @@ def handle_message(event):
                                 title='請輸入你要的選股策略:',
                                 text='請選擇選股標的',
                                 actions=[
-                                    MessageAction(
-                                        label='1.本益比',
-                                        text='本益比'
-                                    ),
-                                    MessageAction(
-                                        label='2.殖利率',
-                                        text='殖利率'
-                                    ),
-                                    MessageAction(
-                                        label='3.EPS',
-                                        text='EPS'
-                                    )
-                                ]
-                            )
-                        )
-                    )
-        
-        """
-        # 回復傳入的訊息文字
-        line_bot_api.reply_message(  
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='請輸入你要的選股策略:',
-                                text='請選擇選股標的',
-                                actions=[
                                     PostbackAction(
                                         label='1.本益比',
                                         text='1.本益比',
@@ -174,10 +146,7 @@ def handle_message(event):
                             )
                         )
                     )
-        """
         
-        if event.message.text=="1.本益比":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是本益比"))
         
         """
         if event.message.text=="1.水泥工業":
@@ -242,7 +211,7 @@ def handle_message2(event):
     return 0
 
 """
-"""      
+      
 @handler.add(PostbackEvent)
 def handle_postback(event):
     # event.postback.data 取得使用者點選回傳值的結果
@@ -469,9 +438,9 @@ def handle_postback(event):
                             data='證券業'
                             ),
                     PostbackAction(
-                            label='30.其他業/31.油電燃氣業',
-                            text='30.其他業/31.油電燃氣業',
-                            data='其他業/油電燃氣業'
+                            label='30.其他業',
+                            text='30.其他業',
+                            data='其他業'
                             ),
                     
                 ]
@@ -481,32 +450,50 @@ def handle_postback(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
         
-        if event.postback.data == '其他業/油電燃氣業':
-            # 回復傳入的訊息文字
-            line_bot_api.reply_message(  
-                            event.reply_token,
-                            TemplateSendMessage(
-                                alt_text='Buttons template',
-                                template=ButtonsTemplate(
-                                    title='請輸入類股代號：',
-                                    text='請選擇產業類股',
-                                    actions=[
-                                        PostbackAction(
-                                            label='30.其他業',
-                                            text='30.其他業',
-                                            data='其他業'
-                                        ),
-                                        PostbackAction(
-                                            label='31.油電燃氣業',
-                                            text='31.油電燃氣業',
-                                            data='油電燃氣業'
-                                        )
-                                    ]
-                                )
-                            )
-                        )
         
-       
+        Carousel_template1 = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='31.油電燃氣業',
+                            text='31.油電燃氣業',
+                            data='油電燃氣業'
+                            ),
+                    PostbackAction(
+                            label='32.電子商務',
+                            text='32.電子商務',
+                            data='電子商務'
+                            ),
+                    PostbackAction(
+                            label='33.文化創意業',
+                            text='33.文化創意業',
+                            data='文化創意業'
+                            ),
+                    
+                ]
+            ),
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='34.農業科技業',
+                            text='34.農業科技業',
+                            data='農業科技業'
+                            ),
+                ]
+            ) 
+        ]
+    )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template1)
+        
+        """
         # 回復傳入的訊息文字
         line_bot_api.reply_message(  
                         event.reply_token,
@@ -574,7 +561,7 @@ def handle_postback(event):
                         )
                     )
     
-        
+        """
         
     
     elif event.postback.data == '殖利率':
@@ -585,7 +572,7 @@ def handle_postback(event):
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
-"""
+
 
 
 
