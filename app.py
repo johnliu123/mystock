@@ -516,6 +516,14 @@ def handle_postback(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
 
     elif event.postback.data == '水泥工業':  
+        
+        test=[]
+        for i in range(0,5):
+            test.append(i)
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=result+test))
+        
+        """
         #請求網站
         list_req = requests.post(url, headers = headers1)
         #將整個網站的程式碼爬下來
@@ -606,6 +614,7 @@ def handle_postback(event):
         #delay_choices = [1,2,3]  #延遲的秒數
         delay = random.choice(delay_choices)  #隨機選取秒數
         time.sleep(delay)  #延遲
+        """
     
     elif event.postback.data == '電子通路業/證券業':  
         Carousel_template = TemplateSendMessage(
