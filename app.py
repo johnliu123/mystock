@@ -23,7 +23,8 @@ from linebot.models import (
     PostbackEvent,
     PostbackAction,
     CarouselColumn,
-    CarouselTemplate
+    CarouselTemplate,
+    PostbackTemplateAction
 )
 
 def stock_Strategy(usespeakStrategy):
@@ -127,17 +128,17 @@ def handle_message(event):
                                 title='請輸入你要的選股策略:',
                                 text='請選擇選股標的',
                                 actions=[
-                                    PostbackAction(
+                                    PostbackTemplateAction(
                                         label='1.本益比',
                                         text='1.本益比',
                                         data='本益比'
                                     ),
-                                    PostbackAction(
+                                    PostbackTemplateAction(
                                         label='2.殖利率',
                                         text='2.殖利率',
                                         data='殖利率'
                                     ),
-                                    PostbackAction(
+                                    PostbackTemplateAction(
                                         label='3.EPS',
                                         text='3.EPS',
                                         data='EPS'
