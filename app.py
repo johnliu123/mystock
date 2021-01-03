@@ -449,7 +449,7 @@ def handle_postback(event):
         ]
     )
     )
-        #line_bot_api.reply_message(event.reply_token,Carousel_template)
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
         #line_bot_api.reply_message(event.reply_token,Carousel_template)
         #,TextSendMessage(text="您選擇的是"+result)
         
