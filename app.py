@@ -599,7 +599,7 @@ def handle_postback(event):
                                                   headers=headers2, params=params)
         
         result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,headers=headers2,TextSendMessage(text=result+"請看line通知"))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=result+"請看line通知"))
         
         #設定隨機的延遲時間 避免相同的request時間
         delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
