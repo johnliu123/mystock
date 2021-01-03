@@ -451,14 +451,10 @@ def handle_postback(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
         
-        
-        """
         if event.postback.data == '水泥工業':
             result = event.postback.data
             #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
             line_bot_api.push_message(event.push_token, TextSendMessage(text="您選擇的是"+result))
-        """
-        
         """
         Carousel_template1 = TemplateSendMessage(
         alt_text='Carousel template',
@@ -584,12 +580,7 @@ def handle_postback(event):
 
 
 
-@handler.add(PostbackEvent)
-def handle_postback1(event):
-    if event.postback.data == '水泥工業':
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-        #line_bot_api.push_message(event.push_token, TextSendMessage(text="您選擇的是"+result))
+
 
 """
 @handler.add(MessageEvent, message=TextMessage)
