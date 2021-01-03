@@ -451,7 +451,11 @@ def handle_postback(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
         
+        if event.postback.data == '水泥工業':
+            result = event.postback.data
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         
+        """
         Carousel_template1 = TemplateSendMessage(
         alt_text='Carousel template',
         template=CarouselTemplate(
@@ -493,6 +497,7 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template1)
+        """
         
         """
         # 回復傳入的訊息文字
