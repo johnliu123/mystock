@@ -28,6 +28,7 @@ from linebot.models import (
 )
 
 
+"""
 import time
 import schedule
 from pymongo import MongoClient
@@ -39,6 +40,8 @@ import numpy as np
 import random
 from fake_useragent import UserAgent
 
+
+"""
 """
 #line message api 通知設定
 # 必須放上自己的 Token
@@ -85,9 +88,9 @@ headers1 = {
     #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
     "Referer": "https://www.google.com/"
 }
-
-
 """
+
+
 
 app = Flask(__name__)
 
@@ -520,106 +523,7 @@ def handle_postback(event):
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         
-        """
-        test=[]
-        for i in range(0,5):
-            test.append(i)
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=result+test))
         
-        """
-        """
-        #請求網站
-        list_req = requests.post(url, headers = headers1)
-        #將整個網站的程式碼爬下來
-        soup = BeautifulSoup(list_req.content, "html.parser")
-        
-        #取text數字(股票代碼) 先存成list 再用迴圈取出來
-        stock_mun=soup.find_all(class_="link_black",target="_blank",text=re.compile('\d{4}'),href=re.compile("StockDetail"))
-        stock_mun_list=[]
-        
-        for num in stock_mun:
-            #print(num.text)
-            stock_mun_list.append(num.text)
-        
-        #去除重複的股票代碼
-        stock_mun_list=np.unique(stock_mun_list).tolist()
-        
-        stock=[]
-        
-        for num in stock_mun_list:
-            #print(num)
-            try:
-                url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
-                #請求網站
-                list_req1 = requests.post(url1, headers = headers1)
-                #將整個網站的程式碼爬下來
-                soup1 = BeautifulSoup(list_req1.text, "html.parser")
-                tr=soup1.find_all('tr')[6]
-                td=tr.find_all('td')[1]
-                PBR= td.text
-                PBR=PBR.replace(",", "")
-                if PBR =='N/A':
-                    #print("空值")
-                    pass
-                    #continue
-                    #break
-                else:
-                    tr1=soup1.find_all('tr')[7]
-                    td1=tr1.find_all('td')[1]
-                    avrPBR= td1.text
-                    PBR=float(PBR)
-                    avrPBR=avrPBR.replace(",", "")
-                    avrPBR=float(avrPBR)
-                    
-                    if PBR<=15:
-                        
-                        if PBR<avrPBR:
-                            #print('本益比小')
-                            stock.append(num)
-                        else:
-                            #print('本益比大')
-                            pass
-                    else:
-                        #print('本益比大')
-                        pass
-            except IndexError:
-                    pass
-        
-        result_stock=''
-        
-        for i in stock:
-            url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
-            #請求網站
-            list_req1 = requests.post(url1, headers = headers1)
-            #將整個網站的程式碼爬下來
-            soup1 = BeautifulSoup(list_req1.content, "html.parser")
-            td=soup1.find_all('td')[4]
-            a=td.text
-            a=a.lstrip()
-            a=a.split(" ")
-            a=a[0]
-            a=a.split("(")
-            a=a[0]
-            a=a.replace("*","")
-            print(i+a+' ')
-            result=i+a+' '
-            result_stock+=result+'\n'
-           
-            
-        params = {"message": '水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
-        r = requests.post("https://notify-api.line.me/api/notify",
-                                                  headers=headers2, params=params)
-        
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=result+"請看line通知"))
-        
-        #設定隨機的延遲時間 避免相同的request時間
-        delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
-        #delay_choices = [1,2,3]  #延遲的秒數
-        delay = random.choice(delay_choices)  #隨機選取秒數
-        time.sleep(delay)  #延遲
-        """
     
     elif event.postback.data == '光電業/電子通路業':  
         Carousel_template = TemplateSendMessage(
@@ -646,6 +550,7 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+        
     elif event.postback.data == '證券業/其他業':  
         Carousel_template = TemplateSendMessage(
         alt_text='Carousel template',
@@ -671,6 +576,7 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+        
     elif event.postback.data == '油電燃氣業/電子商務':  
         Carousel_template = TemplateSendMessage(
         alt_text='Carousel template',
@@ -696,6 +602,7 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+        
     elif event.postback.data == '文化創意業/農業科技業':  
         Carousel_template = TemplateSendMessage(
         alt_text='Carousel template',
@@ -722,6 +629,10 @@ def handle_postback(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
 
+    elif event.postback.data == '光電業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    
     elif event.postback.data == '電子通路業':  
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
@@ -729,6 +640,27 @@ def handle_postback(event):
     elif event.postback.data == '證券業':  
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    
+    elif event.postback.data == '其他業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    
+    elif event.postback.data == '油電燃氣業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+    elif event.postback.data == '電子商務':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+    elif event.postback.data == '文化創意業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    elif event.postback.data == '農業科技業':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+        
 
 """
 @handler.add(MessageEvent, message=TextMessage)
