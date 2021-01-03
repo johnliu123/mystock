@@ -448,7 +448,7 @@ def handle_postback(event):
         ]
     )
     )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)
+        #line_bot_api.reply_message(event.reply_token,Carousel_template)
         
         if event.postback.data == '其他業/油電燃氣業':
             # 回復傳入的訊息文字
