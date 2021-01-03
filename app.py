@@ -150,6 +150,8 @@ def handle_message(event):
         
         
         
+        if event.message.text=="1.水泥工業":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
         
         
         
@@ -443,28 +445,6 @@ def handle_postback(event):
                             ),
                     
                 ]
-            ),
-            CarouselColumn(
-                title='請輸入類股代號：',
-                text='請選擇產業類股',
-                actions=[
-                    PostbackAction(
-                            label='31.油電燃氣業',
-                            text='31.油電燃氣業',
-                            data='油電燃氣業'
-                            ),
-                    PostbackAction(
-                            label='32.電子商務',
-                            text='32.電子商務',
-                            data='電子商務'
-                            ),
-                    PostbackAction(
-                            label='33.文化創意業',
-                            text='33.文化創意業',
-                            data='文化創意業'
-                            ),
-                    
-                ]
             ) 
         ]
     )
@@ -605,8 +585,6 @@ def handle_postback(event):
     elif event.postback.data == '水泥工業':  
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-    
-    
 
 
 
