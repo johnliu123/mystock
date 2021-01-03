@@ -149,10 +149,7 @@ def handle_message(event):
                     )
         
         
-        """
-        if event.message.text=="1.水泥工業":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
-        """
+        
         
         
         """
@@ -450,127 +447,6 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
-        
-        
-        """
-        if event.postback.data == '水泥工業':
-            result = event.postback.data
-            #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-            line_bot_api.push_message(event.push_token, TextSendMessage(text="您選擇的是"+result))
-        """
-        """
-        Carousel_template1 = TemplateSendMessage(
-        alt_text='Carousel template',
-        template=CarouselTemplate(
-        columns=[
-            CarouselColumn(
-                title='請輸入類股代號：',
-                text='請選擇產業類股',
-                actions=[
-                    PostbackAction(
-                            label='31.油電燃氣業',
-                            text='31.油電燃氣業',
-                            data='油電燃氣業'
-                            ),
-                    PostbackAction(
-                            label='32.電子商務',
-                            text='32.電子商務',
-                            data='電子商務'
-                            ),
-                    PostbackAction(
-                            label='33.文化創意業',
-                            text='33.文化創意業',
-                            data='文化創意業'
-                            ),
-                    
-                ]
-            ),
-            CarouselColumn(
-                title='請輸入類股代號：',
-                text='請選擇產業類股',
-                actions=[
-                    PostbackAction(
-                            label='34.農業科技業',
-                            text='34.農業科技業',
-                            data='農業科技業'
-                            ),
-                ]
-            ) 
-        ]
-    )
-    )
-        line_bot_api.reply_message(event.reply_token,Carousel_template1)
-        """
-        
-        """
-        # 回復傳入的訊息文字
-        line_bot_api.reply_message(  
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='請輸入類股代號：',
-                                text='請選擇產業類股',
-                                actions=[
-                                    PostbackAction(
-                                        label='1.水泥工業',
-                                        text='1.水泥工業',
-                                        data='水泥工業'
-                                    ),
-                                    PostbackAction(
-                                        label='2.食品工業',
-                                        text='2.食品工業',
-                                        data='食品工業'
-                                    ),
-                                    PostbackAction(
-                                        label='3.塑膠工業',
-                                        text='3.塑膠工業',
-                                        data='塑膠工業'
-                                    ),
-                                    PostbackAction(
-                                        label='4.紡織纖維',
-                                        text='4.紡織纖維',
-                                        data='紡織纖維'
-                                    )
-                                ]
-                            )
-                        )
-                    )
-        # 回復傳入的訊息文字
-        line_bot_api.reply_message(  
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='請輸入類股代號：',
-                                text='請選擇產業類股',
-                                actions=[
-                                    PostbackAction(
-                                        label='5.電機機械',
-                                        text='5.電機機械',
-                                        data='電機機械'
-                                    ),
-                                    PostbackAction(
-                                        label='6.電器電纜',
-                                        text='6.電器電纜',
-                                        data='電器電纜'
-                                    ),
-                                    PostbackAction(
-                                        label='7.生技醫療業',
-                                        text='7.生技醫療業',
-                                        data='生技醫療業'
-                                    ),
-                                    PostbackAction(
-                                        label='8.化學工業',
-                                        text='8.化學工業',
-                                        data='化學工業'
-                                    )
-                                ]
-                            )
-                        )
-                    )
-    
-        """
         
     
     elif event.postback.data == '殖利率':
