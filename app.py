@@ -39,7 +39,7 @@ import numpy as np
 import random
 from fake_useragent import UserAgent
 
-
+"""
 #line message api 通知設定
 # 必須放上自己的 Token
 token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
@@ -87,7 +87,7 @@ headers1 = {
 }
 
 
-
+"""
 
 app = Flask(__name__)
 
@@ -472,9 +472,9 @@ def handle_postback(event):
                             data='貿易百貨業'
                             ),
                     PostbackAction(
-                            label='27.光電業',
-                            text='27.光電業',
-                            data='光電業'
+                            label='27.光電業/28.電子通路業',
+                            text='27.光電業/28.電子通路業',
+                            data='光電業/電子通路業'
                             ),
                     
                 ]
@@ -484,19 +484,19 @@ def handle_postback(event):
                 text='請選擇產業類股',
                 actions=[
                     PostbackAction(
-                            label='28.電子通路業/29.證券業',
-                            text='28.電子通路業/29.證券業',
-                            data='電子通路業/證券業'
+                            label='29.證券業/30.其他業',
+                            text='29.證券業/30.其他業',
+                            data='證券業/其他業'
                             ),
                     PostbackAction(
-                            label='29.證券業',
-                            text='29.證券業',
-                            data='證券業'
+                            label='31.油電燃氣業/32.電子商務',
+                            text='31.油電燃氣業/32.電子商務',
+                            data='油電燃氣業/電子商務'
                             ),
                     PostbackAction(
-                            label='30.其他業',
-                            text='30.其他業',
-                            data='其他業'
+                            label='33.文化創意業/34.農業科技業',
+                            text='33.文化創意業/34.農業科技業',
+                            data='文化創意業/農業科技業'
                             ),
                     
                 ]
@@ -517,12 +517,17 @@ def handle_postback(event):
 
     elif event.postback.data == '水泥工業':  
         
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+        """
         test=[]
         for i in range(0,5):
             test.append(i)
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=result+test))
         
+        """
         """
         #請求網站
         list_req = requests.post(url, headers = headers1)
@@ -616,7 +621,7 @@ def handle_postback(event):
         time.sleep(delay)  #延遲
         """
     
-    elif event.postback.data == '電子通路業/證券業':  
+    elif event.postback.data == '光電業/電子通路業':  
         Carousel_template = TemplateSendMessage(
         alt_text='Carousel template',
         template=CarouselTemplate(
@@ -626,14 +631,89 @@ def handle_postback(event):
                 text='請選擇產業類股',
                 actions=[
                     PostbackAction(
+                            label='27.光電業',
+                            text='27.光電業',
+                            data='光電業'
+                            ),
+                    PostbackAction(
                             label='28.電子通路業',
                             text='28.電子通路業',
                             data='電子通路業'
                             ),
+                ]
+            )
+        ]
+    )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+    elif event.postback.data == '證券業/其他業':  
+        Carousel_template = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
                     PostbackAction(
                             label='29.證券業',
                             text='29.證券業',
                             data='證券業'
+                            ),
+                    PostbackAction(
+                            label='30.其他業',
+                            text='30.其他業',
+                            data='其他業'
+                            ),
+                ]
+            )
+        ]
+    )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+    elif event.postback.data == '油電燃氣業/電子商務':  
+        Carousel_template = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='31.油電燃氣業',
+                            text='31.油電燃氣業',
+                            data='油電燃氣業'
+                            ),
+                    PostbackAction(
+                            label='32.電子商務',
+                            text='32.電子商務',
+                            data='電子商務'
+                            ),
+                ]
+            )
+        ]
+    )
+    )
+        line_bot_api.reply_message(event.reply_token,Carousel_template)
+    elif event.postback.data == '文化創意業/農業科技業':  
+        Carousel_template = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+        columns=[
+            CarouselColumn(
+                title='請輸入類股代號：',
+                text='請選擇產業類股',
+                actions=[
+                    PostbackAction(
+                            label='33.文化創意業',
+                            text='33.文化創意業',
+                            data='文化創意業'
+                            ),
+                    PostbackAction(
+                            label='34.農業科技業',
+                            text='34.農業科技業',
+                            data='農業科技業'
                             ),
                 ]
             )
