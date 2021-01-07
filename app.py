@@ -520,8 +520,13 @@ def handle_postback(event):
 
     elif event.postback.data == '水泥工業':  
         
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        #result = event.postback.data
+        result=[]
+        for i in range(0,5):
+            result.append(i)
+        
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+i))
         
         
     
