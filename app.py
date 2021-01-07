@@ -526,7 +526,7 @@ def handle_postback(event):
             result.append(i)
         
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+i))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         
         
     
