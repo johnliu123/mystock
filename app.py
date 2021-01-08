@@ -47,9 +47,14 @@ def test ():
     
     #result="test"
     
+    result=""
+    
     test =["one","two"]
     
-    result = {"message":test}
+    for i in test:
+        result+=i+'\n'
+    
+    #result = {"message":test}
     
     return result
 
