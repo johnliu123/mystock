@@ -105,7 +105,7 @@ def stock ():
           
     if "5371" in stock_price:              
         url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
-        list_req = requests.get(url, headers = header1)
+        list_req = requests.get(url)
         #要使用list_req.text 不是使用list_req.content不然會有亂碼
         soup = BeautifulSoup(list_req.text, "html.parser")
         tables=soup.find_all('table')[1] #裡面所有文字內容
