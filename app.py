@@ -42,6 +42,32 @@ from fake_useragent import UserAgent
 
 
 """
+
+#line message api 通知設定
+# 必須放上自己的 Token
+token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
+    
+#user_agent = UserAgent()
+        
+headers = {
+        
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+        "Accept-Encoding": "gzip, deflate, br", 
+        "Accept-Language": "zh-TW,zh;q=0.9", 
+        #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
+        "Sec-Fetch-Dest": "document", 
+        "Sec-Fetch-Mode": "navigate", 
+        "Sec-Fetch-Site": "none", 
+        "Upgrade-Insecure-Requests": "1", 
+        #隨機設定 使用者代理(User-Agent)
+        #"User-Agent":user_agent.random,
+        #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
+        "Referer": "https://www.google.com/"
+}
+
+
 """
 #line message api 通知設定
 # 必須放上自己的 Token
@@ -274,29 +300,7 @@ def handle_message2(event):
 @handler.add(PostbackEvent)
 def handle_postback(event):
     
-    #line message api 通知設定
-    # 必須放上自己的 Token
-    token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
     
-    #user_agent = UserAgent()
-        
-    headers = {
-        
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
-        "Accept-Encoding": "gzip, deflate, br", 
-        "Accept-Language": "zh-TW,zh;q=0.9", 
-        #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
-        "Sec-Fetch-Dest": "document", 
-        "Sec-Fetch-Mode": "navigate", 
-        "Sec-Fetch-Site": "none", 
-        "Upgrade-Insecure-Requests": "1", 
-        #隨機設定 使用者代理(User-Agent)
-        #"User-Agent":user_agent.random,
-        #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
-        "Referer": "https://www.google.com/"
-    }
     
     # event.postback.data 取得使用者點選回傳值的結果
     if event.postback.data == '本益比':
