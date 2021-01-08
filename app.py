@@ -28,7 +28,7 @@ from linebot.models import (
 )
 
 
-
+"""
 import time
 import schedule
 from pymongo import MongoClient
@@ -41,8 +41,8 @@ import random
 from fake_useragent import UserAgent
 
 
-
-
+"""
+"""
 #line message api 通知設定
 # 必須放上自己的 Token
 token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
@@ -67,7 +67,6 @@ headers2 = {
     #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
     "Referer": "https://www.google.com/"
 }
-"""
 
 # 要抓取的網址
 url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
@@ -522,19 +521,12 @@ def handle_postback(event):
     elif event.postback.data == '水泥工業':  
         
         #result = event.postback.data
-        
-        """
         result=[]
         for i in range(0,5):
             result.append(i)
-        """
-        params = {"message": 'test'}
-        r = requests.post("https://notify-api.line.me/api/notify",
-                                          headers=headers2, params=params)
-        
         
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         
         
     
