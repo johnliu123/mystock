@@ -709,7 +709,8 @@ def handle_postback(event):
         
         #result = "TEST"
         
-        result=test()
+        #result=test()
+        result=stock()
         
         """
         result=[]
