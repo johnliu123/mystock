@@ -74,7 +74,7 @@ def stock ():
     
     user_agent = UserAgent()
     
-    headers1 = {
+    header1 = {
         
         #"Authorization": "Bearer " + token,
         "Content-Type": "application/x-www-form-urlencoded",
