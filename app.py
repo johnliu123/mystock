@@ -557,11 +557,13 @@ def handle_postback(event):
             result.append(i)
         """
         
-        params = {"message":"test"}
-        r = requests.post("https://notify-api.line.me/api/notify",
-                                          headers=headers, params=params)
+        result=["1","2"]
         
-        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        #params = {"message":"test"}
+        #r = requests.post("https://notify-api.line.me/api/notify",
+                                          #headers=headers, params=params)
+        
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         
         
