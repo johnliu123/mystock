@@ -551,9 +551,7 @@ def handle_postback(event):
         
         #result = event.postback.data
         
-        #result = "TEST"
-        
-        result = ["1","2"]
+        result = "TEST"
         
         """
         result=[]
