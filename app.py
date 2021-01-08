@@ -557,7 +557,7 @@ def handle_postback(event):
             result.append(i)
         """
         
-        result=["1","2"]
+        result＝"test"
         
         #params = {"message":"test"}
         #r = requests.post("https://notify-api.line.me/api/notify",
