@@ -45,7 +45,11 @@ from fake_useragent import UserAgent
 
 def test ():
     
-    result="test"
+    #result="test"
+    
+    test =["one","two"]
+    
+    result = {"message":test}
     
     return result
 
