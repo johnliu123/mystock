@@ -43,6 +43,14 @@ from fake_useragent import UserAgent
 
 """
 
+def test ():
+    
+    result="test"
+    
+    return result
+
+
+
 #line message api 通知設定
 # 必須放上自己的 Token
 token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
@@ -551,7 +559,9 @@ def handle_postback(event):
         
         #result = event.postback.data
         
-        result = "TEST"
+        #result = "TEST"
+        
+        result=test()
         
         """
         result=[]
