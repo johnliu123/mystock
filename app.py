@@ -113,7 +113,7 @@ def stock ():
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
-    
+    """
     stock=[]
 
     for num in stock_mun_list:
@@ -192,6 +192,13 @@ def stock ():
     #delay_choices = [1,2,3]  #延遲的秒數
     delay = random.choice(delay_choices)  #隨機選取秒數
     time.sleep(delay)  #延遲
+    """
+    
+    result=''
+    
+    for i in stock_mun_list:
+        result+=i+'\n'
+    
     
     
     return result
