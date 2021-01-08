@@ -551,13 +551,14 @@ def handle_postback(event):
         
         #result = event.postback.data
         
+        result = "TEST"
+        
         """
         result=[]
         for i in range(0,5):
             result.append(i)
         """
         
-        result＝"test"
         
         #params = {"message":"test"}
         #r = requests.post("https://notify-api.line.me/api/notify",
