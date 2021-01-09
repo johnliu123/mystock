@@ -69,11 +69,12 @@ def stock ():
     #import datetime
     import re
     import numpy as np
-    
+    from fake_useragent import UserAgent
     import random
     
     # 要抓取的網址
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=水泥工業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
+    user_agent = UserAgent()
     
     headers = {
         
