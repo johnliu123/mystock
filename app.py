@@ -116,7 +116,7 @@ def stock ():
         #print(num.text)
         #stock_mun_list.append(num.text)
         result=num.text
-        break
+        #break
     
     #去除重複的股票代碼
     #stock_mun_list=np.unique(stock_mun_list).tolist()
