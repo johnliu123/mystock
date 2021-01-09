@@ -80,8 +80,8 @@ def stock ():
         
        
         #隨機設定 使用者代理(User-Agent)
-        "User-Agent":user_agent.random,
-        #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36", #使用者代理
+        #"User-Agent":user_agent.random,
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36", #使用者代理
         
     }
     
@@ -105,7 +105,7 @@ def stock ():
     #請求網站
     list_req = requests.post(url, headers = headers)
     #將整個網站的程式碼爬下來
-    soup = BeautifulSoup(list_req.content, "html.parser")
+    soup = BeautifulSoup(list_req.content, "lxml")
             
     
     #取text數字(股票代碼) 先存成list 再用迴圈取出來
