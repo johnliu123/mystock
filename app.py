@@ -73,7 +73,7 @@ def stock ():
     import random
     
     # 要抓取的網址
-    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
+    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=水泥工業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
     headers = {
         
@@ -89,7 +89,7 @@ def stock ():
         "Upgrade-Insecure-Requests": "1", 
         #隨機設定 使用者代理(User-Agent)
         #"User-Agent":user_agent.random,
-        #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36", #使用者代理
         "Referer": "https://www.google.com/"
     }
     
