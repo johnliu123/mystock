@@ -109,14 +109,16 @@ def stock ():
     
     #取text數字(股票代碼) 先存成list 再用迴圈取出來
     stock_mun=soup.find_all(class_="link_black",target="_blank",text=re.compile('\d{4}'),href=re.compile("StockDetail"))
-    stock_mun_list=[]
+    #stock_mun_list=[]
     
     for num in stock_mun:
         #print(num.text)
-        stock_mun_list.append(num.text)
+        #stock_mun_list.append(num.text)
+        result=num.text
+        break
     
     #去除重複的股票代碼
-    stock_mun_list=np.unique(stock_mun_list).tolist()
+    #stock_mun_list=np.unique(stock_mun_list).tolist()
     
     """
     stock=[]
@@ -201,9 +203,11 @@ def stock ():
     
     #result=''
     
+    """
     for i in stock_mun_list:
         result=i
         break
+    """
     
     return result
 
