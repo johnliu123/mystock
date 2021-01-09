@@ -208,10 +208,11 @@ def stock ():
     time.sleep(delay)  #延遲
     """
     
-    result=''
+    #result=''
     
     for i in stock_mun_list:
-        result+=i+'\n'
+        result=i
+        break
     
     return result
 
