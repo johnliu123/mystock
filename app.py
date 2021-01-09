@@ -73,9 +73,9 @@ def stock ():
     import random
     
     # 要抓取的網址
-    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
+    #url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
-    headers1 = {
+    headers = {
         
         #"Authorization": "Bearer " + token,
         "Content-Type": "application/x-www-form-urlencoded",
@@ -94,8 +94,21 @@ def stock ():
     }
     
     
+    url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
+    list_req = requests.get(url, headers = headers)
+    #要使用list_req.text 不是使用list_req.content不然會有亂碼
+    soup = BeautifulSoup(list_req.text, "html.parser")
+    tables=soup.find_all('table')[1] #裡面所有文字內容
+    table1=soup.find_all('table')[2]
+    a=table1.find_all("a")[0].text[4:]#股票名稱
+    tds=tables.find_all("td")[3]
+    getstock= tds.find('b').text
+    getstock=float(getstock)
+    result=str("5371")+a+ ' 的價格：' + str(getstock)
     
     
+    
+    """
     #請求網站
     list_req = requests.post(url, headers = headers1)
     #將整個網站的程式碼爬下來
@@ -192,7 +205,7 @@ def stock ():
     #delay_choices = [1,2,3]  #延遲的秒數
     delay = random.choice(delay_choices)  #隨機選取秒數
     time.sleep(delay)  #延遲
-    
+    """
     
     return result
 
