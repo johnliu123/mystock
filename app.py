@@ -73,7 +73,7 @@ def stock ():
     import random
     
     # 要抓取的網址
-    #url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
+    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
     headers = {
         
@@ -94,6 +94,7 @@ def stock ():
     }
     
     
+    """
     url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
     list_req = requests.get(url, headers = headers)
     #要使用list_req.text 不是使用list_req.content不然會有亂碼
@@ -105,12 +106,12 @@ def stock ():
     getstock= tds.find('b').text
     getstock=float(getstock)
     result=str("5371")+a+ ' 的價格：' + str(getstock)
-    
-    
-    
     """
+    
+    
+    
     #請求網站
-    list_req = requests.post(url, headers = headers1)
+    list_req = requests.post(url, headers = headers)
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
             
@@ -126,7 +127,7 @@ def stock ():
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
-    
+    """
     stock=[]
 
     for num in stock_mun_list:
@@ -206,6 +207,11 @@ def stock ():
     delay = random.choice(delay_choices)  #隨機選取秒數
     time.sleep(delay)  #延遲
     """
+    
+    result=''
+    
+    for i in stock_mun_list:
+        result+=i+'\n'
     
     return result
 
