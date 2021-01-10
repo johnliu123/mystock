@@ -88,7 +88,19 @@ def stock ():
     }
     
     
-    
+    """
+    url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
+    list_req = requests.get(url, headers = headers)
+    #要使用list_req.text 不是使用list_req.content不然會有亂碼
+    soup = BeautifulSoup(list_req.text, "html.parser")
+    tables=soup.find_all('table')[1] #裡面所有文字內容
+    table1=soup.find_all('table')[2]
+    a=table1.find_all("a")[0].text[4:]#股票名稱
+    tds=tables.find_all("td")[3]
+    getstock= tds.find('b').text
+    getstock=float(getstock)
+    result=str("5371")+a+ ' 的價格：' + str(getstock)
+    """
     
     
     
