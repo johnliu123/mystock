@@ -88,7 +88,7 @@ def stock ():
     }
     
     
-    """
+    
     url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
     list_req = requests.get(url, headers = headers)
     #要使用list_req.text 不是使用list_req.content不然會有亂碼
@@ -100,11 +100,11 @@ def stock ():
     getstock= tds.find('b').text
     getstock=float(getstock)
     result=str("5371")+a+ ' 的價格：' + str(getstock)
+    
+    
+    
+    
     """
-    
-    
-    
-    
     #請求網站
     list_req = requests.post(url, headers = headers)
     
@@ -125,6 +125,7 @@ def stock ():
         result=str(num.text)
         break
     
+    """
     """
     """
     #去除重複的股票代碼
