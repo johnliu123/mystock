@@ -139,7 +139,13 @@ def stock ():
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
-    result=str(stock_mun_list)
+    
+    result=""
+    
+    for i in stock_mun_list:
+        result+=i+'\n'
+    
+    return result
     
     """
     stock=[]
@@ -230,7 +236,7 @@ def stock ():
         break
     """
     
-    return result
+    #return result
 
 """
 可以用的
