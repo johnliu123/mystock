@@ -110,18 +110,18 @@ def stock ():
     
     #取text數字(股票代碼) 先存成list 再用迴圈取出來
     stock_mun=soup.find_all(class_="link_black",target="_blank",text=re.compile('\d{4}'),href=re.compile("StockDetail"))
-    #stock_mun_list=[]
+    stock_mun_list=[]
     
     for num in stock_mun:
         #print(num.text)
-        #stock_mun_list.append(num.text)
+        stock_mun_list.append(num.text)
         result=num.text
         #break
     
     #去除重複的股票代碼
-    #stock_mun_list=np.unique(stock_mun_list).tolist()
+    stock_mun_list=np.unique(stock_mun_list).tolist()
     
-    """
+    
     stock=[]
 
     for num in stock_mun_list:
@@ -129,7 +129,7 @@ def stock ():
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
             #請求網站
-            list_req1 = requests.post(url1, headers = headers1)
+            list_req1 = requests.post(url1, headers = headers)
             #將整個網站的程式碼爬下來
             soup1 = BeautifulSoup(list_req1.text, "html.parser")
             tr=soup1.find_all('tr')[6]
@@ -171,7 +171,7 @@ def stock ():
     for i in stock:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
         #請求網站
-        list_req1 = requests.post(url1, headers = headers1)
+        list_req1 = requests.post(url1, headers = headers)
         #將整個網站的程式碼爬下來
         soup1 = BeautifulSoup(list_req1.content, "html.parser")
         td=soup1.find_all('td')[4]
@@ -194,7 +194,7 @@ def stock ():
     #r = requests.post("https://notify-api.line.me/api/notify",
                                               #headers=headers2, params=params)
     
-    
+    """
     #設定隨機的延遲時間 避免相同的request時間
     delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
     #delay_choices = [1,2,3]  #延遲的秒數
