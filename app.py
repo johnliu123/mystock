@@ -140,14 +140,8 @@ def stock ():
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
     
-    result=""
     
-    for i in stock_mun_list:
-        result+=i+'\n'
     
-    return result
-    
-    """
     stock=[]
 
     for num in stock_mun_list:
@@ -155,7 +149,7 @@ def stock ():
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
             #請求網站
-            list_req1 = requests.post(url1, headers = headers1)
+            list_req1 = requests.post(url1, headers = headers)
             #將整個網站的程式碼爬下來
             soup1 = BeautifulSoup(list_req1.text, "html.parser")
             tr=soup1.find_all('tr')[6]
@@ -188,6 +182,19 @@ def stock ():
                     pass
         except IndexError:
                 pass
+        
+        
+    result=""
+    
+    for i in stock:
+        result+=i+'\n'
+    
+    
+    
+    return result
+    
+    """
+    
     
     
     
