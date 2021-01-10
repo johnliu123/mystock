@@ -116,15 +116,16 @@ def stock ():
     stock_mun=soup.find_all(class_="link_black",target="_blank",text=re.compile('\d{4}'),href=re.compile("StockDetail"))
     result=str(stock_mun)
     
-    """
+    
     #stock_mun_list=[]
     
     for num in stock_mun:
         #print(num.text)
         #stock_mun_list.append(num.text)
-        result=num.text
+        result=str(num.text)
         break
     
+    """
     """
     #去除重複的股票代碼
     #stock_mun_list=np.unique(stock_mun_list).tolist()
