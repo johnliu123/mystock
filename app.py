@@ -108,13 +108,12 @@ def stock ():
     #請求網站
     list_req = requests.post(url, headers = headers)
     
-    result=str(list_req)
-    
-    """
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
-            
     
+    result=str(soup)
+    
+    """
     #取text數字(股票代碼) 先存成list 再用迴圈取出來
     stock_mun=soup.find_all(class_="link_black",target="_blank",text=re.compile('\d{4}'),href=re.compile("StockDetail"))
     #stock_mun_list=[]
