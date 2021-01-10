@@ -69,13 +69,13 @@ def stock ():
     #import datetime
     #import re
     #import numpy as np
-    #from fake_useragent import UserAgent
+    from fake_useragent import UserAgent
     #import random
     
     # 要抓取的網址
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=水泥工業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
-    """
+    
     user_agent = UserAgent()
     
     headers = {
@@ -86,7 +86,7 @@ def stock ():
         #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36", #使用者代理
         
     }
-    """
+    
     
     """
     url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
@@ -102,11 +102,15 @@ def stock ():
     result=str("5371")+a+ ' 的價格：' + str(getstock)
     """
     
-    result=url
     
-    """
+    
+    
     #請求網站
     list_req = requests.post(url, headers = headers)
+    
+    result=list_req
+    
+    """
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
             
