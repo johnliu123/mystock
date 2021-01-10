@@ -62,15 +62,15 @@ def test ():
 
 def stock ():
     
-    import time
+    #import time
     #import schedule
     #from pymongo import MongoClient
     #import urllib.parse
     #import datetime
     import re
-    import numpy as np
+    #import numpy as np
     from fake_useragent import UserAgent
-    import random
+    #import random
     
     # 要抓取的網址
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=水泥工業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
@@ -116,7 +116,7 @@ def stock ():
         #print(num.text)
         #stock_mun_list.append(num.text)
         result=num.text
-        #break
+        break
     
     #去除重複的股票代碼
     #stock_mun_list=np.unique(stock_mun_list).tolist()
