@@ -100,8 +100,9 @@ def stock ():
     result=str("5371")+a+ ' 的價格：' + str(getstock)
     """
     
+    result=url
     
-    
+    """
     #請求網站
     list_req = requests.post(url, headers = headers)
     #將整個網站的程式碼爬下來
@@ -118,6 +119,7 @@ def stock ():
         result=num.text
         break
     
+    """
     #去除重複的股票代碼
     #stock_mun_list=np.unique(stock_mun_list).tolist()
     
