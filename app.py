@@ -108,7 +108,7 @@ def stock ():
     #請求網站
     list_req = requests.post(url, headers = headers)
     
-    result=list_req
+    result=str(list_req)
     
     """
     #將整個網站的程式碼爬下來
