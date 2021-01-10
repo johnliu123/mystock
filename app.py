@@ -68,7 +68,7 @@ def stock ():
     #import urllib.parse
     #import datetime
     #import re
-    #import numpy as np
+    import numpy as np
     #from fake_useragent import UserAgent
     #import random
     
@@ -88,7 +88,7 @@ def stock ():
     }
     
     
-    
+    """
     url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
     list_req = requests.get(url, headers = headers)
     #要使用list_req.text 不是使用list_req.content不然會有亂碼
@@ -100,11 +100,11 @@ def stock ():
     getstock= tds.find('b').text
     getstock=float(getstock)
     result=str("5371")+a+ ' 的價格：' + str(getstock)
-    
-    
-    
-    
     """
+    
+    
+    
+    
     #請求網站
     list_req = requests.post(url, headers = headers)
     
@@ -117,19 +117,20 @@ def stock ():
     
     
     
-    #stock_mun_list=[]
+    stock_mun_list=[]
     
     for num in stock_mun:
         #print(num.text)
-        #stock_mun_list.append(num.text)
-        result=str(num.text)
-        break
+        stock_mun_list.append(num.text)
+        #result=str(num.text)
+        
     
-    """
-    """
-    """
+
+    
     #去除重複的股票代碼
-    #stock_mun_list=np.unique(stock_mun_list).tolist()
+    stock_mun_list=np.unique(stock_mun_list).tolist()
+    
+    result=str(stock_mun_list)
     
     """
     stock=[]
