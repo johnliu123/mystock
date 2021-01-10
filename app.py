@@ -112,6 +112,8 @@ def stock ():
     stock_mun=soup.find_all(class_="link_black",target="_blank",text=re.compile('\d{4}'),href=re.compile("StockDetail"))
     #stock_mun_list=[]
     
+    result=''
+    
     for num in stock_mun:
         #print(num.text)
         #stock_mun_list.append(num.text)
