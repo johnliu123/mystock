@@ -150,7 +150,7 @@ def stock_crab():
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
             #請求網站
-            list_req1 = requests.post(url1, headers = headers1)
+            list_req1 = requests.post(url1, headers = headers)
             #將整個網站的程式碼爬下來
             soup1 = BeautifulSoup(list_req1.text, "html.parser")
             tr=soup1.find_all('tr')[6]
@@ -184,23 +184,23 @@ def stock_crab():
         except IndexError:
                 pass
     
-    """
+    
     result=""
     
     for i in stock:
         result+=i+'\n'
     
     return result
+    
+    
     """
-    
-    
     #result_stock_list=[]
     result_stock=''
     
     for i in stock:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
         #請求網站
-        list_req1 = requests.post(url1, headers = headers1)
+        list_req1 = requests.post(url1, headers = headers)
         #將整個網站的程式碼爬下來
         soup1 = BeautifulSoup(list_req1.content, "html.parser")
         td=soup1.find_all('td')[4]
@@ -223,7 +223,7 @@ def stock_crab():
     #r = requests.post("https://notify-api.line.me/api/notify",
                                               #headers=headers2, params=params)
     
-    """
+    
     #設定隨機的延遲時間 避免相同的request時間
     delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
     #delay_choices = [1,2,3]  #延遲的秒數
@@ -239,7 +239,7 @@ def stock_crab():
         break
     """
     
-    return result
+    #return result
 
 """
 可以用的
