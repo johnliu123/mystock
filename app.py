@@ -140,6 +140,7 @@ def stock_crab():
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
     
+    """
     result=""
     
     for i in stock_mun_list:
@@ -148,6 +149,8 @@ def stock_crab():
     return result
     
     """
+
+    
     stock=[]
 
     for num in stock_mun_list:
@@ -226,7 +229,7 @@ def stock_crab():
     #delay_choices = [1,2,3]  #延遲的秒數
     delay = random.choice(delay_choices)  #隨機選取秒數
     time.sleep(delay)  #延遲
-    """
+    
     
     #result=''
     
@@ -236,7 +239,7 @@ def stock_crab():
         break
     """
     
-    #return result
+    return result
 
 """
 可以用的
