@@ -44,7 +44,7 @@ from fake_useragent import UserAgent
 """
 
 
-def test ():
+def test():
     
     #result="test"
     
@@ -60,7 +60,7 @@ def test ():
     return result
 
 
-def stock ():
+def stock_crab():
     
     #import time
     #import schedule
@@ -751,8 +751,8 @@ def handle_postback(event):
         
         #result = "TEST"
         
-        #result=test()
-        result=stock()
+        result=test()
+        #result=stock_crab()
         
         """
         result=[]
