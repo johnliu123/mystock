@@ -141,7 +141,7 @@ def stock_crab():
     
     
     
-    
+    ##這段有問題
     
     stock=[]
 
@@ -157,6 +157,11 @@ def stock_crab():
             td=tr.find_all('td')[1]
             PBR= td.text
             PBR=PBR.replace(",", "")
+            
+            result=PBR
+                
+            return result
+            
             if PBR =='N/A':
                 #print("空值")
                 pass
@@ -170,9 +175,7 @@ def stock_crab():
                 avrPBR=avrPBR.replace(",", "")
                 avrPBR=float(avrPBR)
                 
-                result=PBR
                 
-                return result
                 
                 if PBR<=15:
                     
