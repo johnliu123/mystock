@@ -170,6 +170,10 @@ def stock_crab():
                 avrPBR=avrPBR.replace(",", "")
                 avrPBR=float(avrPBR)
                 
+                result=PBR
+                
+                return result
+                
                 if PBR<=15:
                     
                     if PBR<avrPBR:
@@ -184,14 +188,14 @@ def stock_crab():
         except IndexError:
                 pass
     
-    
+    """
     result=""
     
     for i in stock:
         result+=i+'\n'
     
     return result
-    
+    """
     
     """
     #result_stock_list=[]
