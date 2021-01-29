@@ -140,14 +140,9 @@ def stock_crab():
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
     
-    result=""
     
-    for i in stock_mun_list:
-        result+=i+'\n'
     
-    return result
     
-    """
     stock=[]
 
     for num in stock_mun_list:
@@ -189,6 +184,14 @@ def stock_crab():
         except IndexError:
                 pass
     
+    """
+    result=""
+    
+    for i in stock:
+        result+=i+'\n'
+    
+    return result
+    """
     
     
     #result_stock_list=[]
@@ -220,7 +223,7 @@ def stock_crab():
     #r = requests.post("https://notify-api.line.me/api/notify",
                                               #headers=headers2, params=params)
     
-    
+    """
     #設定隨機的延遲時間 避免相同的request時間
     delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
     #delay_choices = [1,2,3]  #延遲的秒數
@@ -236,7 +239,7 @@ def stock_crab():
         break
     """
     
-    #return result
+    return result
 
 """
 可以用的
