@@ -149,6 +149,9 @@ def stock_crab():
         #print(num)
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
+            #result=list_req1
+                
+            return url1
             list_req1 = requests.post(url1, headers = headers)
             
             
@@ -160,9 +163,7 @@ def stock_crab():
             soup1 = BeautifulSoup(list_req1.text, "html.parser")
             
             
-            #result=list_req1
-                
-            return list_req1
+            
             tr=soup1.find_all('tr')[6]
             td=tr.find_all('td')[1]
             PBR= td.text
