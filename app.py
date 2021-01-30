@@ -145,7 +145,7 @@ def stock_crab():
     
     stock1=[]
 
-    for num in stock_mun_list:
+    for num in stock_mun_list[0]:
         #print(num)
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
@@ -189,6 +189,7 @@ def stock_crab():
                     
                     if PBR<avrPBR:
                         #print('本益比小')
+                        #單一一個 list 顯示ok 
                         stock1.append(num)
                         
                     else:
