@@ -213,7 +213,7 @@ def stock_crab():
                 
     return result
     
-    """
+    """"
     # 一筆正常 取2筆或其他筆有問題
     result=""
     
