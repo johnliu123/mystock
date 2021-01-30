@@ -143,7 +143,7 @@ def stock_crab():
     
     
     
-    stock1=[]
+    stock=[]
 
     for num in stock_mun_list:
         #print(num)
@@ -189,7 +189,7 @@ def stock_crab():
                     
                     if PBR<avrPBR:
                         #print('本益比小')
-                        stock1.append(num)
+                        stock.append(num)
                     else:
                         #print('本益比大')
                         pass
@@ -199,7 +199,7 @@ def stock_crab():
         except IndexError:
                 pass
     
-    result=str(stock1)
+    result=str(stock)
                 
     return result
     
