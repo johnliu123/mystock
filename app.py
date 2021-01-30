@@ -139,11 +139,9 @@ def stock_crab():
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
-    result=""
+    result=stock_mun_list
     
-    for i in stock_mun_list:
-        #result+=i+'\n'
-        result+=i
+    
     
     return result
     
