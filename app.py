@@ -145,7 +145,7 @@ def stock_crab():
     
     stock1=[]
 
-    for num in stock_mun_list[1]:
+    for num in stock_mun_list[:2]:
         #print(num)
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
