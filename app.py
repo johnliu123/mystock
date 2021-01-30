@@ -190,6 +190,14 @@ def stock_crab():
                     if PBR<avrPBR:
                         #print('本益比小')
                         stock1.append(num)
+                        
+                        result=""
+    
+                        for i in stock1:
+                            result+=i+'\n'
+                        
+                        return result
+                        
                     else:
                         #print('本益比大')
                         pass
@@ -204,14 +212,14 @@ def stock_crab():
     #return result
     
     
-    
+    """
     result=""
     
     for i in stock1:
         result+=i+'\n'
     
     return result
-    
+    """
     
     """
     #result_stock_list=[]
