@@ -156,7 +156,7 @@ def stock_crab():
             #將整個網站的程式碼爬下來
             soup1 = BeautifulSoup(list_req1.text, "html.parser")
             
-            result=list_req1.text
+            result=str(list_req1)
                 
             return result
             
