@@ -209,11 +209,11 @@ def stock_crab():
         except IndexError:
                 pass
     
-    result=str(len(stock1))
+    #result=str(len(stock1))
                 
-    return result
+    #return result
     
-    """"
+    
     # 一筆正常 取2筆或其他筆有問題
     result=""
     
@@ -222,7 +222,7 @@ def stock_crab():
         result+=i
     
     return result
-    """
+    
     
     """
     #result_stock_list=[]
