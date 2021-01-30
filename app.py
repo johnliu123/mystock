@@ -139,7 +139,13 @@ def stock_crab():
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
+    result=""
     
+    for i in stock_mun_list:
+        #result+=i+'\n'
+        result+=i
+    
+    return result
     
     
     
@@ -205,7 +211,7 @@ def stock_crab():
                 
     #return result
     
-    
+    """
     # 一筆正常 取2筆或其他筆有問題
     result=""
     
@@ -214,7 +220,7 @@ def stock_crab():
         result+=i
     
     return result
-    
+    """
     
     """
     #result_stock_list=[]
