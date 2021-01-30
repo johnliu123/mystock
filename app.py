@@ -149,6 +149,10 @@ def stock_crab():
         #print(num)
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
+            
+            result=url1
+                
+            return result
             #請求網站
             list_req1 = requests.post(url1, headers = headers)
             #將整個網站的程式碼爬下來
@@ -158,9 +162,7 @@ def stock_crab():
             PBR= td.text
             PBR=PBR.replace(",", "")
             
-            result=PBR
-                
-            return result
+            
             
             if PBR =='N/A':
                 #print("空值")
