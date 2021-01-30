@@ -145,7 +145,7 @@ def stock_crab():
     
     stock1=[]
 
-    for num in stock_mun_list[0]:
+    for num in stock_mun_list[:2]:
         #print(num)
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
@@ -206,7 +206,7 @@ def stock_crab():
     #return result
     
     
-    
+    # 一筆正常
     result=""
     
     for i in stock1:
