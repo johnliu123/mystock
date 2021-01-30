@@ -199,19 +199,19 @@ def stock_crab():
         except IndexError:
                 pass
     
-    result=str(stock)
+    #result=str(stock)
                 
-    return result
+    #return result
     
     
-    """
+    
     result=""
     
     for i in stock:
         result+=i+'\n'
     
     return result
-    """
+    
     
     """
     #result_stock_list=[]
