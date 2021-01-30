@@ -219,8 +219,8 @@ def stock_crab():
     result=""
     
     for i in stock1:
-        result+=i+'\n'
-        #result+=i
+        #result+=i+'\n'
+        result+=i
     ####要變成str才會顯示結果
     result=str(result)
     
