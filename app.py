@@ -151,7 +151,7 @@ def stock_crab():
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
             
             
-            #請求網站
+            #請求網站 (要轉成str 才能print出來)
             list_req1 = requests.post(url1, headers = headers)
             
             #測試ok
@@ -164,11 +164,10 @@ def stock_crab():
             tr=soup1.find_all('tr')[6]
             td=tr.find_all('td')[1]
             PBR= td.text
+            
+            #測試ok
             PBR=PBR.replace(",", "")
             
-            result=str(PBR)
-                
-            return result
             
             
             if PBR =='N/A':
@@ -199,6 +198,11 @@ def stock_crab():
                     pass
         except IndexError:
                 pass
+    
+    result=str(stock)
+                
+    return result
+    
     
     """
     result=""
