@@ -78,7 +78,7 @@ def stock_crab():
     
     #user_agent = UserAgent()
     
-    headers = {
+    headers1 = {
             
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
@@ -115,7 +115,7 @@ def stock_crab():
     
     
     #請求網站
-    list_req = requests.post(url, headers = headers)
+    list_req = requests.post(url, headers = headers1)
     
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
@@ -149,7 +149,7 @@ def stock_crab():
         #print(num)
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
-            list_req1 = requests.post(url1, headers = headers)
+            list_req1 = requests.post(url1, headers = headers1)
             
             
             #請求網站
