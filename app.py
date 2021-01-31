@@ -251,13 +251,16 @@ def stock_crab():
         #print(result_stock)
         #result_stock_list.append(result)
         
+    result=result_stock
     
-    result='水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
+    return result
+    
+    #result='水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
     #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
     #r = requests.post("https://notify-api.line.me/api/notify",
                                               #headers=headers2, params=params)
     
-    return result
+    
     
     """
     #設定隨機的延遲時間 避免相同的request時間
