@@ -239,6 +239,11 @@ def stock_crab():
         soup1 = BeautifulSoup(list_req1.content, "html.parser")
         td=soup1.find_all('td')[4]
         a=td.text
+        result=str(a)
+    
+        return result
+        
+        """
         a=a.lstrip()
         a=a.split(" ")
         a=a[0]
@@ -246,10 +251,11 @@ def stock_crab():
         a=a[0]
         a=a.replace("*","")
         print(i+a+' ')
+        """
         #卡在這
-        result=str(a)
+        #result=str(a)
     
-        return result
+        #return result
         
         """
         resultstock=i+a+' '
