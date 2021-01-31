@@ -251,7 +251,7 @@ def stock_crab():
         #print(result_stock)
         #result_stock_list.append(result)
         
-    result_stock=str(result_stock)
+    #result_stock=str(result_stock)
     
     result=result_stock
     
