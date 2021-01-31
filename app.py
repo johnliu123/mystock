@@ -236,7 +236,7 @@ def stock_crab():
         #請求網站
         list_req1 = requests.post(url1, headers = headers)
         #將整個網站的程式碼爬下來
-        soup1 = BeautifulSoup(list_req1.text, "html.parser")
+        soup1 = BeautifulSoup(list_req1.content, "html.parser")
         td=soup1.find_all('td')[4]
         a=td.text
         a=a.lstrip()
@@ -246,12 +246,16 @@ def stock_crab():
         a=a[0]
         a=a.replace("*","")
         print(i+a+' ')
-        resultstock=i+a+' '
-        result_stock+=resultstock+'\n'
         
-        result=result_stock
+        result=i
     
         return result
+        
+        """
+        resultstock=i+a+' '
+        result_stock+=resultstock+'\n'
+        """
+        
         
         #print(result_stock)
         #result_stock_list.append(result)
