@@ -246,8 +246,8 @@ def stock_crab():
         a=a[0]
         a=a.replace("*","")
         print(i+a+' ')
-        
-        result=i+str(a)
+        #卡在這
+        result=str(a)
     
         return result
         
