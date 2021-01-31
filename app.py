@@ -215,14 +215,14 @@ def stock_crab():
     #return result
     
     
-    # 一筆正常 取2筆或其他筆有問題
+    # 一筆正常 取2筆或其他筆有問題  result+=i+'\n'(有問題)
     result=""
     
     for i in stock1:
         result+=i+'\n'
         #result+=i
     ####要變成str才會顯示結果
-    result=str(result)
+    #result=str(result)
     
     return result
     
