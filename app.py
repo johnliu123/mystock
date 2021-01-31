@@ -231,7 +231,7 @@ def stock_crab():
     #result_stock_list=[]
     result_stock=''
     
-    for i in stock:
+    for i in stock1:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
         #請求網站
         list_req1 = requests.post(url1, headers = headers)
