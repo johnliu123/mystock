@@ -248,14 +248,17 @@ def stock_crab():
         print(i+a+' ')
         resultstock=i+a+' '
         result_stock+=resultstock+'\n'
+        
+        result=result_stock
+    
+        return result
+        
         #print(result_stock)
         #result_stock_list.append(result)
         
     #result_stock=str(result_stock)
     
-    result=result_stock
     
-    return result
     
     #result='水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
     #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
