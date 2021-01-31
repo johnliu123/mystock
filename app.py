@@ -214,7 +214,7 @@ def stock_crab():
                 
     #return result
     
-    
+    """
     # ok 可以回傳
     result=""
     
@@ -225,9 +225,9 @@ def stock_crab():
     #result=str(result)
     
     return result
-    
-    
     """
+    
+    
     #result_stock_list=[]
     result_stock=''
     
@@ -257,7 +257,9 @@ def stock_crab():
     #r = requests.post("https://notify-api.line.me/api/notify",
                                               #headers=headers2, params=params)
     
+    return result
     
+    """
     #設定隨機的延遲時間 避免相同的request時間
     delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
     #delay_choices = [1,2,3]  #延遲的秒數
