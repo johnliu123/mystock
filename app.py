@@ -246,8 +246,8 @@ def stock_crab():
         a=a[0]
         a=a.replace("*","")
         print(i+a+' ')
-        result=i+a+' '
-        result_stock+=result+'\n'
+        resultstock=i+a+' '
+        result_stock+=resultstock+'\n'
         #print(result_stock)
         #result_stock_list.append(result)
         
