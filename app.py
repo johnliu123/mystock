@@ -228,7 +228,7 @@ def stock_crab():
     """
     
     
-    ##result_stock_list=[]
+    #result_stock_list=[]
     #result_stock=''
     
     for i in stock1:
