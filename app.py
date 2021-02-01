@@ -233,13 +233,16 @@ def stock_crab():
     
     for i in stock1:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
+        
+        result=str(url1)
+    
+        return result
+        
         #請求網站
         list_req1 = requests.post(url1, headers = headers)
         #將整個網站的程式碼爬下來
         soup1 = BeautifulSoup(list_req1.content, "html.parser")
-        result=str(list_req1)
-    
-        return result
+        
         
         """
         td=soup1.find_all('td')[4]
