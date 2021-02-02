@@ -117,9 +117,9 @@ def stock_crab():
     #請求網站
     list_req = requests.post(url, headers = headers)
     
-    result=str(list_req)
-    return result
-    """
+    #result=str(list_req)
+    #return result
+    
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
     
@@ -147,13 +147,13 @@ def stock_crab():
     result=""
     
     for i in stock_mun_list:
-        result+=i+'\n'
-        #result+=i
+        #result+=i+'\n'
+        result+=i
     
     result=str(result)
     return result
     
-    
+    """
     
     stock1=[]
 
