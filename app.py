@@ -222,7 +222,7 @@ def stock_crab():
         result+=i+'\n'
         
     ####要變成str才會顯示結果
-    #result=str(result)
+    result=str(result)
     
     return result
     
@@ -790,7 +790,7 @@ def handle_postback(event):
         
         #result=test()
         result=stock_crab()
-        #result=str(result)
+        result=str(result)
         
         """
         result=[]
