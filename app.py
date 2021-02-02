@@ -144,8 +144,8 @@ def stock_crab():
     result=""
     
     for i in stock_mun_list:
-        #result+=i+'\n'
-        result+=i
+        result+=i+'\n'
+        #result+=i
     
     return result
     
@@ -790,7 +790,7 @@ def handle_postback(event):
         
         #result=test()
         result=stock_crab()
-        result=str(result)
+        #result=str(result)
         
         """
         result=[]
