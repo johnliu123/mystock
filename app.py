@@ -790,7 +790,7 @@ def handle_postback(event):
         
         #result=test()
         result=stock_crab()
-        result=str(result)
+        #result=str(result)
         
         """
         result=[]
@@ -989,5 +989,5 @@ def handle_message1(event):
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-    #app.run(debug=True)
+    #app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
