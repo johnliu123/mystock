@@ -12,7 +12,7 @@ import mongodb
 import re
 import requests
 from bs4 import BeautifulSoup
-
+import numpy as np
 
 from linebot.models import (
     MessageEvent,
@@ -68,7 +68,7 @@ def stock_crab():
     #import urllib.parse
     #import datetime
     #import re
-    import numpy as np
+    
     #from fake_useragent import UserAgent
     #import random
     
