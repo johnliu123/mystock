@@ -147,7 +147,7 @@ def stock_crab():
     result=""
     
     for i in stock_mun_list:
-        result+=i+'\n'
+        result+=str(i)+'\n'
         #result+=i
     
     #result=str(result)
