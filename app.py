@@ -140,6 +140,7 @@ def stock_crab():
     stock_mun_list1=np.unique(stock_mun_list).tolist()    
     
     
+    """
     result=""
     
     for i in stock_mun_list1:
@@ -147,6 +148,10 @@ def stock_crab():
         #result+=i+" "
     
     #result=str(result)
+    """
+    
+    
+    result=str(len(stock_mun_list1))
     return result
     
     
