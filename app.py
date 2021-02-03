@@ -796,7 +796,7 @@ def handle_postback(event):
         
         #result=test()
         result=stock_crab()
-        #result=str(result)
+        result=str(result)
         
         """
         result=[]
