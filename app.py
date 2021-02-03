@@ -135,17 +135,18 @@ def stock_crab():
         #print(num.text)
         stock_mun_list.append(num.text)
         #result=str(num.text)
-   
-    #去除重複的股票代碼(這行有問題)
-    #stock_mun_list1=np.unique(stock_mun_list).tolist()    
     
+    #去除重複的股票代碼(這行有問題)
+    stock_mun_list1=np.unique(stock_mun_list).tolist()    
+    
+    """
     stock_mun_list1=[]
     
     for i in stock_mun_list:
         if i not in stock_mun_list1:
             stock_mun_list1.append(i)
-    
     """
+    
     result=""
     
     for i in stock_mun_list1:
@@ -153,10 +154,10 @@ def stock_crab():
         #result+=i+" "
     
     #result=str(result)
-    """
     
     
-    result=str(len(stock_mun_list1))
+    
+    #result=str(len(stock_mun_list1))
     return result
     
     
