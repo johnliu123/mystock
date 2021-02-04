@@ -804,8 +804,8 @@ def handle_postback(event):
         
         #result = "TEST"
         
-        #result=test()
-        result=stock_crab()
+        result=test()
+        #result=stock_crab()
         #result=str(result)
         
         """
