@@ -117,10 +117,10 @@ def stock_crab():
     #請求網站
     list_req = requests.post(url, headers = headers)
     
-    result=str(list_req)
-    return result
+    #result=str(list_req)
+    #return result
     
-    """
+    
     
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
@@ -139,8 +139,17 @@ def stock_crab():
         #result=str(num.text)
         
     
-
+    result=""
     
+    for i in stock_mun_list:
+        result+=i+'\n'
+        #result+=i
+    
+    #result=str(result)
+    return result
+
+
+    """
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
