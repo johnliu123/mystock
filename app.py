@@ -12,7 +12,7 @@ import mongodb
 import re
 import requests
 from bs4 import BeautifulSoup
-import numpy as np
+
 
 from linebot.models import (
     MessageEvent,
@@ -36,8 +36,11 @@ import urllib.parse
 import datetime
 import re
 import numpy as np
+
 import random
 from fake_useragent import UserAgent
+
+
 """
 
 
@@ -65,7 +68,7 @@ def stock_crab():
     #import urllib.parse
     #import datetime
     #import re
-    
+    import numpy as np
     #from fake_useragent import UserAgent
     #import random
     
@@ -114,8 +117,10 @@ def stock_crab():
     #請求網站
     list_req = requests.post(url, headers = headers)
     
-    #result=str(list_req)
-    #return result
+    result=str(list_req)
+    return result
+    
+    """
     
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
@@ -132,34 +137,10 @@ def stock_crab():
         #print(num.text)
         stock_mun_list.append(num.text)
         #result=str(num.text)
-    
-    #去除重複的股票代碼(這行有問題)
-    #stock_mun_list1=np.unique(stock_mun_list).tolist()    
-    
-    """
-    stock_mun_list1=[]
-    
-    for i in stock_mun_list:
-        if i not in stock_mun_list1:
-            stock_mun_list1.append(i)
-    """
-    
-    result=""
-    
-    for i in stock_mun_list:
-        result+=i+'\n'
-        #result+=i+" "
-    
-    result=str(result)
-    
-    
-    
-    #result=str(len(stock_mun_list1))
-    return result
-    
+        
     
 
-    """
+    
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
     
@@ -168,8 +149,8 @@ def stock_crab():
     result=""
     
     for i in stock_mun_list:
-        #result+=str(i)+'\n'
-        result+=i+" "
+        result+=i+'\n'
+        #result+=i
     
     #result=str(result)
     return result
@@ -177,6 +158,7 @@ def stock_crab():
     
     
     stock1=[]
+
     for num in stock_mun_list:
         #print(num)
         try:
@@ -324,12 +306,15 @@ headers = {
         #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
         "Referer": "https://www.google.com/"
 }
+
 """
 
 """
 #line message api 通知設定
 # 必須放上自己的 Token
 token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
+
+
 user_agent = UserAgent()
  
 headers2 = {
@@ -349,8 +334,10 @@ headers2 = {
     #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
     "Referer": "https://www.google.com/"
 }
+
 # 要抓取的網址
 url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
+
 headers1 = {
     
     "Authorization": "Bearer " + token,
@@ -548,6 +535,7 @@ def handle_message2(event):
         
         
     return 0
+
 """
       
 @handler.add(PostbackEvent)
@@ -974,6 +962,7 @@ def handle_message1(event):
     if re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
         data = mongodb.show_user_stock_fountion()
+
         stock_price=[]
         
         for i in data:
@@ -992,6 +981,7 @@ def handle_message1(event):
             getstock=float(getstock)
             get=str(usespeak[0:4]) + '的價格：' + str(getstock)
             line_bot_api.push_message(uid, TextSendMessage(get))
+
                
         else:
             #print("查無此股票價格！！")
