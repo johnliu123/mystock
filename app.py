@@ -155,7 +155,7 @@ def stock_crab():
     return result
     
     
-    
+    """
     stock1=[]
 
     for num in stock_mun_list:
