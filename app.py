@@ -219,7 +219,7 @@ def stock_crab():
                 
     #return result
     
-    
+    """
     # ok 可以回傳
     result=""
     
@@ -230,13 +230,13 @@ def stock_crab():
     #result=str(result)
     
     return result
-    
-    
     """
+    
+    
     #result_stock_list=[]
     result_stock=''
     
-    for i in stock:
+    for i in stock1:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
         #請求網站
         list_req1 = requests.post(url1, headers = headers)
@@ -257,6 +257,19 @@ def stock_crab():
         #result_stock_list.append(result)
         
     
+    result=""
+    
+    for i in stock1:
+        result+=i+'\n'
+        
+    ####要變成str才會顯示結果
+    #result=str(result)
+    
+    return result
+    
+    
+    
+    """
     result='水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
     #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
     #r = requests.post("https://notify-api.line.me/api/notify",
