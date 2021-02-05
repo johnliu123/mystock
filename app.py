@@ -135,7 +135,9 @@ def stock_crab():
         #print(num.text)
         stock_mun_list.append(num.text)
         #result=str(num.text)
+        
     
+
     
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
@@ -152,7 +154,7 @@ def stock_crab():
     
     return result
     
-    """
+    
     
     stock1=[]
 
@@ -225,12 +227,12 @@ def stock_crab():
         result+=i+'\n'
         
     ####要變成str才會顯示結果
-    result=str(result)
+    #result=str(result)
     
     return result
     
     
-    
+    """
     #result_stock_list=[]
     result_stock=''
     
