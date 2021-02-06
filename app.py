@@ -162,7 +162,7 @@ def stock_crab():
     stock1=[]
 
     for num in stock_mun_list:
-    #print(num)
+        #print(num)
         try:
             url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
             #請求網站
@@ -201,11 +201,11 @@ def stock_crab():
                 pass
     
     #測試ok 有顯示出所有stock筆數
-    result=len(stock1)
+    #result=len(stock1)
                 
-    return result
+    #return result
     
-    """
+    
     # ok 可以回傳
     result=""
     
@@ -213,11 +213,11 @@ def stock_crab():
         result+=i+'\n'
         
     ####要變成str才會顯示結果
-    result=str(result)
+    #result=str(result)
     
     return result
     
-    
+    """
     
     #result_stock_list=[]
     result_stock=''
