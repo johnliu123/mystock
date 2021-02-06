@@ -213,7 +213,7 @@ def stock_crab():
         except IndexError:
                 pass
     
-    #測試ok 有顯示出所有stock筆數
+   #測試ok 有顯示出所有stock筆數
     #result=str(len(stock1))
                 
     #return result
@@ -231,7 +231,7 @@ def stock_crab():
     return result
     
     
-    """"
+    """
     #result_stock_list=[]
     result_stock=''
     
