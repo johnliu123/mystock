@@ -154,51 +154,10 @@ def stock_crab():
     return result
     """
     
-    stock1=[]
     
-    for num in stock_mun_list:
-        try:
-            url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
-            #請求網站 (要轉成str 才能print出來)
-            list_req1 = requests.post(url1, headers = headers)
-            #測試ok
-            
-            #將整個網站的程式碼爬下來
-            soup1 = BeautifulSoup(list_req1.text, "html.parser")
-            tr=soup1.find_all('tr')[6]
-            td=tr.find_all('td')[1]
-            PBR= td.text
-            #測試ok
-            PBR=PBR.replace(",", "")
-            if PBR =='N/A':
-                pass
-            else:
-                tr1=soup1.find_all('tr')[7]
-                td1=tr1.find_all('td')[1]
-                avrPBR= td1.text
-                PBR=float(PBR)
-                avrPBR=avrPBR.replace(",", "")
-                avrPBR=float(avrPBR)
-            
-                if PBR<=15:
-                    if PBR<avrPBR:
-                        #print('本益比小')
-                        stock1.append(num)
-                    
-                    else:
-                        #print('本益比大')
-                        pass
-                else:
-                    #print('本益比大')
-                    pass
-        except IndexError:
-            pass
-        
-    result=str(len(stock1))
-    return result
             
     
-    """
+    
     
     stock1=[]
 
@@ -258,12 +217,12 @@ def stock_crab():
         except IndexError:
                 pass
     
-   #測試ok 有顯示出所有stock筆數
-    #result=str(len(stock1))
+    #測試ok 有顯示出所有stock筆數
+    result=str(len(stock1))
                 
-    #return result
+    return result
     
-    
+    """
     # ok 可以回傳
     result=""
     
