@@ -218,7 +218,7 @@ def stock_crab():
                 
     #return result
     
-    
+    """
     # ok 可以回傳
     result=""
     
@@ -229,13 +229,38 @@ def stock_crab():
     #result=str(result)
     
     return result
+    """
+    
+    result_stock=''
+    
+    for i in stock1:
+        url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
+        #請求網站
+        list_req1 = requests.post(url1, headers = headers)
+        #將整個網站的程式碼爬下來
+        soup1 = BeautifulSoup(list_req1.content, "html.parser")
+        td=soup1.find_all('td')[4]
+        a=td.text
+        a=a.lstrip()
+        a=a.split(" ")
+        a=a[0]
+        a=a.replace("*","")
+        result1=i+a+' '
+        result_stock+=result1+'\n'
+    
+    result=result_stock
+    
+    
+    return result
+    
+    
     
     
     """
     #result_stock_list=[]
     result_stock=''
     
-    for i in stock:
+    for i in stock1:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
         #請求網站
         list_req1 = requests.post(url1, headers = headers)
