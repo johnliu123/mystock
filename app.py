@@ -187,6 +187,8 @@ def stock_crab():
                     pass
         except IndexError:
                 pass
+    
+    
    
     
     
@@ -215,10 +217,105 @@ def stock_crab():
         
     
     result='水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
-    
+    #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
+    #r = requests.post("https://notify-api.line.me/api/notify",
+                                              #headers=headers2, params=params)
     
     return result
     
+    """
+    #設定隨機的延遲時間 避免相同的request時間
+    delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
+    #delay_choices = [1,2,3]  #延遲的秒數
+    delay = random.choice(delay_choices)  #隨機選取秒數
+    time.sleep(delay)  #延遲
+    """
+    
+    #result=''
+    
+    """
+    for i in stock_mun_list:
+        result=i
+        break
+    """
+    
+    #return result
+
+"""
+可以用的
+#line message api 通知設定
+# 必須放上自己的 Token
+token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
+    
+#user_agent = UserAgent()
+        
+headers = {
+        
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+        "Accept-Encoding": "gzip, deflate, br", 
+        "Accept-Language": "zh-TW,zh;q=0.9", 
+        #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
+        "Sec-Fetch-Dest": "document", 
+        "Sec-Fetch-Mode": "navigate", 
+        "Sec-Fetch-Site": "none", 
+        "Upgrade-Insecure-Requests": "1", 
+        #隨機設定 使用者代理(User-Agent)
+        #"User-Agent":user_agent.random,
+        #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
+        "Referer": "https://www.google.com/"
+}
+
+"""
+
+"""
+#line message api 通知設定
+# 必須放上自己的 Token
+token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
+
+
+user_agent = UserAgent()
+ 
+headers2 = {
+    
+    "Authorization": "Bearer " + token,
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+    "Accept-Encoding": "gzip, deflate, br", 
+    "Accept-Language": "zh-TW,zh;q=0.9", 
+    #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
+    "Sec-Fetch-Dest": "document", 
+    "Sec-Fetch-Mode": "navigate", 
+    "Sec-Fetch-Site": "none", 
+    "Upgrade-Insecure-Requests": "1", 
+    #隨機設定 使用者代理(User-Agent)
+    "User-Agent":user_agent.random,
+    #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
+    "Referer": "https://www.google.com/"
+}
+
+# 要抓取的網址
+url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
+
+headers1 = {
+    
+    "Authorization": "Bearer " + token,
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+    "Accept-Encoding": "gzip, deflate, br", 
+    "Accept-Language": "zh-TW,zh;q=0.9", 
+    #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
+    "Sec-Fetch-Dest": "document", 
+    "Sec-Fetch-Mode": "navigate", 
+    "Sec-Fetch-Site": "none", 
+    "Upgrade-Insecure-Requests": "1", 
+    #隨機設定 使用者代理(User-Agent)
+    "User-Agent":user_agent.random,
+    #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
+    "Referer": "https://www.google.com/"
+}
+"""
 
 
 
@@ -309,108 +406,6 @@ def handle_message(event):
         #line_bot_api.push_message(uid,TextSendMessage("請輸入你要的選股策略:"))
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入你要的選股策略:"))
         #usespeakStrategy=str(event.message.text) #使用者講的話
-        
-        # 回復傳入的訊息文字
-        line_bot_api.reply_message(  
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='請輸入你要的選股策略:',
-                                text='請選擇選股標的',
-                                actions=[
-                                    PostbackAction(
-                                        label='1.本益比',
-                                        text='1.本益比',
-                                        data='本益比'
-                                    ),
-                                    PostbackAction(
-                                        label='2.殖利率',
-                                        text='2.殖利率',
-                                        data='殖利率'
-                                    ),
-                                    PostbackAction(
-                                        label='3.EPS',
-                                        text='3.EPS',
-                                        data='EPS'
-                                    )
-                                ]
-                            )
-                        )
-                    )
-        
-        
-        
-        
-        
-        """
-            if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
-                #line_bot_api.push_message(uid,TextSendMessage("測試"))
-                #line_bot_api.reply_message(event.reply_token,"測試")
-                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="測試"))
-                #stock_Strategy(usespeakStrategy)
-        """
-        
-        
-        return 0
-    
-    
-    """
-    elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
-        
-        data=mongodb.show_user_stock_fountion()
-        
-        for i in data:
-           stock=i['stock']
-           bs=i['bs']
-           price=i['price']
-                
-           url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
-           list_req = requests.get(url)
-           soup = BeautifulSoup(list_req.content, "html.parser")
-           tables=soup.find_all('table')[1] #裡面所有文字內容
-           tds=tables.find_all("td")[3]
-           getstock= tds.find('b').text
-           getstock=float(getstock)
-        
-           if getstock< price:
-              get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
-              line_bot_api.push_message(uid, TextSendMessage(get+"結果"))
-              
-           else:
-              get=str(stock) + '的價格：' + str(getstock)
-              #print(get)
-              line_bot_api.push_message(uid,TextSendMessage(get+"結果"))
-              
-        return 0
-        
-        """        
-
-"""
-#訊息傳遞區塊
-#reply_message 使用者輸入訊息 line會回覆相同訊息 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message2(event):
-    
-    if event.message.text=="1.水泥工業":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
-        
-        
-    return 0
-
-"""
-      
-@handler.add(PostbackEvent)
-def handle_postback(event):
-    
-    
-    
-    # event.postback.data 取得使用者點選回傳值的結果
-    if event.postback.data == '本益比':
-        #result = event.postback.data
-        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入類股代號："))
         
         
         Carousel_template = TemplateSendMessage(
@@ -642,34 +637,76 @@ def handle_postback(event):
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
         
+        
+        
+        
+        
+        
+        
+        
+        """
+            if re.match('測試',usespeakStrategy): # 刪除存在資料庫裡面的股票
+                #line_bot_api.push_message(uid,TextSendMessage("測試"))
+                #line_bot_api.reply_message(event.reply_token,"測試")
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="測試"))
+                #stock_Strategy(usespeakStrategy)
+        """
+        
+        
+        return 0
     
-    elif event.postback.data == '殖利率':
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
     
-    elif event.postback.data == 'EPS':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    """
+    elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
+        
+        data=mongodb.show_user_stock_fountion()
+        
+        for i in data:
+           stock=i['stock']
+           bs=i['bs']
+           price=i['price']
+                
+           url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
+           list_req = requests.get(url)
+           soup = BeautifulSoup(list_req.content, "html.parser")
+           tables=soup.find_all('table')[1] #裡面所有文字內容
+           tds=tables.find_all("td")[3]
+           getstock= tds.find('b').text
+           getstock=float(getstock)
+        
+           if getstock< price:
+              get=str(stock) + '的價格：' + str(getstock)
+              #print(get)
+              line_bot_api.push_message(uid, TextSendMessage(get+"結果"))
+              
+           else:
+              get=str(stock) + '的價格：' + str(getstock)
+              #print(get)
+              line_bot_api.push_message(uid,TextSendMessage(get+"結果"))
+              
+        return 0
+        
+        """        
 
-    elif event.postback.data == '水泥工業':  
-        
-        #result = event.postback.data
-        
-        #result = "TEST"
-        
-        #result=test()
-        result=stock_crab()
-        
-        params = {"message":result}
-        r = requests.post("https://notify-api.line.me/api/notify",
-                                          headers=headers2, params=params)
-        
-        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-        
-        
+"""
+#訊息傳遞區塊
+#reply_message 使用者輸入訊息 line會回覆相同訊息 
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message2(event):
     
-    elif event.postback.data == '光電業/電子通路業':  
+    if event.message.text=="1.水泥工業":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您輸入的是水泥工業"))
+        
+        
+    return 0
+
+"""
+      
+@handler.add(PostbackEvent)
+def handle_postback(event):
+    
+    
+    if event.postback.data == '光電業/電子通路業':  
         Carousel_template = TemplateSendMessage(
         alt_text='Carousel template',
         template=CarouselTemplate(
@@ -772,6 +809,41 @@ def handle_postback(event):
     )
     )
         line_bot_api.reply_message(event.reply_token,Carousel_template)
+    
+    
+    
+    elif event.postback.data == '水泥工業':  
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(  
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='請輸入你要的選股策略:',
+                                text='請選擇選股標的',
+                                actions=[
+                                    PostbackAction(
+                                        label='1.本益比',
+                                        text='1.本益比',
+                                        data='本益比'
+                                    ),
+                                    PostbackAction(
+                                        label='2.殖利率',
+                                        text='2.殖利率',
+                                        data='殖利率'
+                                    ),
+                                    PostbackAction(
+                                        label='3.EPS',
+                                        text='3.EPS',
+                                        data='EPS'
+                                    )
+                                ]
+                            )
+                        )
+                    )
+        
+        
 
     elif event.postback.data == '光電業':  
         result = event.postback.data
@@ -804,7 +876,40 @@ def handle_postback(event):
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         
+       
+    
+    
+    # event.postback.data 取得使用者點選回傳值的結果
+    elif event.postback.data == '本益比':
         
+        #result = event.postback.data
+        
+        
+        #result=test()
+        result=stock_crab()
+       
+        
+        
+        
+        
+        params = {"message":result}
+        r = requests.post("https://notify-api.line.me/api/notify",
+                                          headers=headers2, params=params)
+        
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+    
+    elif event.postback.data == '殖利率':
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+    
+    
+    elif event.postback.data == 'EPS':  
+        result = event.postback.data
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+
+     
 
 """
 @handler.add(MessageEvent, message=TextMessage)
