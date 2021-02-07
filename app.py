@@ -78,6 +78,37 @@ def test():
     return result
 
 
+def stock_propose_template():
+    
+    stock_project_template=TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='請輸入你要的選股策略:',
+                                text='請選擇選股標的',
+                                actions=[
+                                    PostbackAction(
+                                        label='1.本益比',
+                                        text='1.本益比',
+                                        data='本益比'
+                                    ),
+                                    PostbackAction(
+                                        label='2.殖利率',
+                                        text='2.殖利率',
+                                        data='殖利率'
+                                    ),
+                                    PostbackAction(
+                                        label='3.EPS',
+                                        text='3.EPS',
+                                        data='EPS'
+                                    )
+                                ]
+                            )
+                        )
+    
+    return stock_project_template
+    
+
+
 def stock_template():
     
     Carousel_template = TemplateSendMessage(
@@ -823,34 +854,13 @@ def handle_postback(event):
     
     elif event.postback.data == '水泥工業':  
         
+        stock_project_template=stock_propose_template()
+        
         # 回復傳入的訊息文字
-        line_bot_api.reply_message(  
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='請輸入你要的選股策略:',
-                                text='請選擇選股標的',
-                                actions=[
-                                    PostbackAction(
-                                        label='1.本益比',
-                                        text='1.本益比',
-                                        data='本益比'
-                                    ),
-                                    PostbackAction(
-                                        label='2.殖利率',
-                                        text='2.殖利率',
-                                        data='殖利率'
-                                    ),
-                                    PostbackAction(
-                                        label='3.EPS',
-                                        text='3.EPS',
-                                        data='EPS'
-                                    )
-                                ]
-                            )
-                        )
-                    )
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
+                        
+                        
+                   
         
         
 
