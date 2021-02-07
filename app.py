@@ -116,24 +116,6 @@ def stock_crab():
     
     
     
-    
-    """
-    url = 'https://tw.stock.yahoo.com/q/q?s=' + "5371" 
-    list_req = requests.get(url, headers = headers)
-    #要使用list_req.text 不是使用list_req.content不然會有亂碼
-    soup = BeautifulSoup(list_req.text, "html.parser")
-    tables=soup.find_all('table')[1] #裡面所有文字內容
-    table1=soup.find_all('table')[2]
-    a=table1.find_all("a")[0].text[4:]#股票名稱
-    tds=tables.find_all("td")[3]
-    getstock= tds.find('b').text
-    getstock=float(getstock)
-    result=str("5371")+a+ ' 的價格：' + str(getstock)
-    """
-    
-    
-    
-    
     #請求網站
     list_req = requests.post(url, headers = headers)
     
@@ -160,20 +142,6 @@ def stock_crab():
     
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
-    
-    
-    """
-    result=""
-    
-    
-    for i in stock_mun_list:
-        result+=i+'\n'
-        #result+=i
-    
-    
-    return result
-    """
-    
     
             
     
@@ -219,24 +187,7 @@ def stock_crab():
                     pass
         except IndexError:
                 pass
-    
-    #測試ok 有顯示出所有stock筆數
-    #result=len(stock1)
-                
-    #return result
-    
-    """
-    # ok 可以回傳
-    result=""
-    
-    for i in stock1:
-        result+=i+'\n'
-        
-    ####要變成str才會顯示結果
-    #result=str(result)
-    
-    return result
-    """
+   
     
     
     #result_stock_list=[]
@@ -264,105 +215,10 @@ def stock_crab():
         
     
     result='水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
-    #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
-    #r = requests.post("https://notify-api.line.me/api/notify",
-                                              #headers=headers2, params=params)
+    
     
     return result
     
-    """
-    #設定隨機的延遲時間 避免相同的request時間
-    delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
-    #delay_choices = [1,2,3]  #延遲的秒數
-    delay = random.choice(delay_choices)  #隨機選取秒數
-    time.sleep(delay)  #延遲
-    """
-    
-    #result=''
-    
-    """
-    for i in stock_mun_list:
-        result=i
-        break
-    """
-    
-    #return result
-
-"""
-可以用的
-#line message api 通知設定
-# 必須放上自己的 Token
-token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
-    
-#user_agent = UserAgent()
-        
-headers = {
-        
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
-        "Accept-Encoding": "gzip, deflate, br", 
-        "Accept-Language": "zh-TW,zh;q=0.9", 
-        #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
-        "Sec-Fetch-Dest": "document", 
-        "Sec-Fetch-Mode": "navigate", 
-        "Sec-Fetch-Site": "none", 
-        "Upgrade-Insecure-Requests": "1", 
-        #隨機設定 使用者代理(User-Agent)
-        #"User-Agent":user_agent.random,
-        #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
-        "Referer": "https://www.google.com/"
-}
-
-"""
-
-"""
-#line message api 通知設定
-# 必須放上自己的 Token
-token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd'
-
-
-user_agent = UserAgent()
- 
-headers2 = {
-    
-    "Authorization": "Bearer " + token,
-    "Content-Type": "application/x-www-form-urlencoded",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
-    "Accept-Encoding": "gzip, deflate, br", 
-    "Accept-Language": "zh-TW,zh;q=0.9", 
-    #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
-    "Sec-Fetch-Dest": "document", 
-    "Sec-Fetch-Mode": "navigate", 
-    "Sec-Fetch-Site": "none", 
-    "Upgrade-Insecure-Requests": "1", 
-    #隨機設定 使用者代理(User-Agent)
-    "User-Agent":user_agent.random,
-    #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
-    "Referer": "https://www.google.com/"
-}
-
-# 要抓取的網址
-url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=半導體業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
-
-headers1 = {
-    
-    "Authorization": "Bearer " + token,
-    "Content-Type": "application/x-www-form-urlencoded",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
-    "Accept-Encoding": "gzip, deflate, br", 
-    "Accept-Language": "zh-TW,zh;q=0.9", 
-    #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
-    "Sec-Fetch-Dest": "document", 
-    "Sec-Fetch-Mode": "navigate", 
-    "Sec-Fetch-Site": "none", 
-    "Upgrade-Insecure-Requests": "1", 
-    #隨機設定 使用者代理(User-Agent)
-    "User-Agent":user_agent.random,
-    #"User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36" #使用者代理
-    "Referer": "https://www.google.com/"
-}
-"""
 
 
 
@@ -803,14 +659,6 @@ def handle_postback(event):
         
         #result=test()
         result=stock_crab()
-        #result=str(result)
-        
-        """
-        result=[]
-        for i in range(0,5):
-            result.append(i)
-        """
-        
         
         params = {"message":result}
         r = requests.post("https://notify-api.line.me/api/notify",
