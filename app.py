@@ -481,7 +481,7 @@ def stock_crab():
         #result_stock_list.append(result)
         
     
-    result='水泥工業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
+    result='相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
     #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
     #r = requests.post("https://notify-api.line.me/api/notify",
                                               #headers=headers2, params=params)
@@ -906,7 +906,7 @@ def handle_postback(event):
         result=stock_crab()
        
         
-        params = {"message":result}
+        params = {"message":"水泥工業"+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
