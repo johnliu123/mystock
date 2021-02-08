@@ -352,7 +352,7 @@ def stock_crab():
     #import datetime
     #import re
     import numpy as np
-    #from fake_useragent import UserAgent
+    from fake_useragent import UserAgent
     #import random
     
     # 要抓取的網址
