@@ -908,9 +908,11 @@ def handle_postback(event):
         #result=test()
         #if 判斷 是否 industry＝水泥工業 傳到stock_crab方法裡
         result=stock_crab()
-       
         
-        params = {"message":"水泥工業"+result}
+        if industry=="水泥工業":
+            params = {"message":industry+result}
+        
+        #params = {"message":"水泥工業"+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
