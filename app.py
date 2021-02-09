@@ -854,13 +854,20 @@ def handle_postback(event):
     
     elif event.postback.data == '水泥工業':  
         
+        industy="水泥工業"
+        
         stock_project_template=stock_propose_template()
         
         # 回復傳入的訊息文字
         line_bot_api.reply_message(event.reply_token,stock_project_template)
                         
                         
-                   
+    elif event.postback.data == '食品工業':  
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)   
         
         
 
@@ -906,7 +913,7 @@ def handle_postback(event):
         result=stock_crab()
        
         
-        params = {"message":"水泥工業"+result}
+        params = {"message":industy+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
