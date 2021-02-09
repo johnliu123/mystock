@@ -854,6 +854,9 @@ def handle_postback(event):
     
     elif event.postback.data == '水泥工業':  
         
+        #if 判斷 是否 industry＝水泥工業
+        industry=event.postback.data
+        
         stock_project_template=stock_propose_template()
         
         # 回復傳入的訊息文字
@@ -903,6 +906,7 @@ def handle_postback(event):
         
         
         #result=test()
+        #if 判斷 是否 industry＝水泥工業 傳到stock_crab方法裡
         result=stock_crab()
        
         
