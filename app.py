@@ -918,7 +918,7 @@ def handle_postback(event):
             name=i
         
         #params = {"message":"水泥工業"+result}
-        params = {"message":name}
+        params = {"message":stock_project_template}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
