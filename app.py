@@ -78,6 +78,15 @@ def test():
     return result
 
 
+def stock_industry(industry):
+    
+    
+    result_industry=industry
+    
+    return result_industry
+
+
+
 def stock_propose_template():
     
     stock_project_template=TemplateSendMessage(
@@ -854,7 +863,9 @@ def handle_postback(event):
     
     elif event.postback.data == '水泥工業':  
         
-        industy=event.postback.data
+        industry=event.postback.data
+        
+        result_industry=stock_industry(industry)
         
         stock_project_template=stock_propose_template()
         
@@ -904,12 +915,11 @@ def handle_postback(event):
     elif event.postback.data == '本益比':
         
         
-        
         #result=test()
         result=stock_crab()
        
-        params = {"message":industy}
-        #params = {"message":"水泥工業"+result}
+        
+        params = {"message":"水泥工業"+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
