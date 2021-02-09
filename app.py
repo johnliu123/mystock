@@ -919,7 +919,8 @@ def handle_postback(event):
         result=stock_crab()
        
         
-        params = {"message":"水泥工業"+result}
+        params = {"message":result_industry}
+        #params = {"message":"水泥工業"+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
