@@ -78,6 +78,20 @@ def test():
     return result
 
 
+def save_industry(industry):
+    
+    industrylist=[]
+    industrylist.append(industry)
+    industry_result=save_industry_result(industrylist)
+    return industry_result
+    
+
+def save_industry_result(industrylist):
+    
+    for i in industrylist:
+        return i    
+
+
 def stock_propose_template():
     
     stock_project_template=TemplateSendMessage(
@@ -856,6 +870,7 @@ def handle_postback(event):
         
         #if 判斷 是否 industry＝水泥工業
         industry=event.postback.data
+        industry_result=save_industry(industry)
         
         stock_project_template=stock_propose_template()
         
@@ -910,7 +925,7 @@ def handle_postback(event):
         result=stock_crab()
        
         
-        params = {"message":"水泥工業"+result}
+        params = {"message":industry_result+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
