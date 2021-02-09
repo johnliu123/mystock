@@ -855,7 +855,8 @@ def handle_postback(event):
     elif event.postback.data == '水泥工業':  
         
         #if 判斷 是否 industry＝水泥工業
-        industry=event.postback.data
+        #industry=event.postback.data
+        industry="水泥工業"
         
         industry_list=[]
         industry_list.append(industry)
