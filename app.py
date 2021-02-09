@@ -343,7 +343,7 @@ def stock_template():
 
 
 
-def stock_crab():
+def stock_crab(industry_name):
     
     #import time
     #import schedule
@@ -481,7 +481,7 @@ def stock_crab():
         #result_stock_list.append(result)
         
     
-    result='相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
+    result=industry_name+'相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock
     #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
     #r = requests.post("https://notify-api.line.me/api/notify",
                                               #headers=headers2, params=params)
@@ -907,10 +907,15 @@ def handle_postback(event):
         
         #result=test()
         #if 判斷 是否 industry＝水泥工業 傳到stock_crab方法裡
-        result=stock_crab()
+        if industry == '水泥工業':
+            
+            industry_name=industry
+        
+        result=stock_crab(industry_name)
        
         
-        params = {"message":"水泥工業"+result}
+        #params = {"message":"水泥工業"+result}
+        params = {"message":result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
