@@ -929,7 +929,8 @@ def handle_postback(event):
         
         
         params = {"message":industry_new+result}
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=params))
+        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text=params))
+        line_bot_api.push_message(uid, TextSendMessage(params))
         #r = requests.post("https://notify-api.line.me/api/notify",
                                           #headers=headers, params=params)
         
