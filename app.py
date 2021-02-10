@@ -929,8 +929,9 @@ def handle_postback(event):
         
         
         params = {"message":industry_new+result}
-        r = requests.post("https://notify-api.line.me/api/notify",
-                                          headers=headers, params=params)
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=params))
+        #r = requests.post("https://notify-api.line.me/api/notify",
+                                          #headers=headers, params=params)
         
     
     elif event.postback.data == '殖利率':
