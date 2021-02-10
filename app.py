@@ -353,7 +353,7 @@ def stock_template():
 
 
 
-def stock_crab():
+def stock_crab(industry_new):
     
     #import time
     #import schedule
@@ -366,7 +366,7 @@ def stock_crab():
     #import random
     
     # 要抓取的網址
-    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT=水泥工業&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
+    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
     
     #user_agent = UserAgent()
@@ -926,10 +926,10 @@ def handle_postback(event):
         
         
         #result=test()
-        result=stock_crab()
-        
         
         industry_new=save_industry(industry="")
+        
+        result=stock_crab(industry_new)
         
         
         params = {"message":industry_new+result}
