@@ -9,6 +9,7 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 import mongodb
+import PER_on
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -339,7 +340,7 @@ def stock_template():
     return Carousel_template
 
 
-
+"""
 def stock_crab(industry_new):
     
     #import time
@@ -485,7 +486,7 @@ def stock_crab(industry_new):
     
     return result
     
-    
+"""
 
 
 
@@ -767,7 +768,7 @@ def handle_postback(event):
         
         industry_new=save_industry(industry="")
         
-        result=stock_crab(industry_new)
+        result=PER_on.PER_crab(industry_new)
         
         
         params = {"message":industry_new+result}
