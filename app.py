@@ -568,8 +568,15 @@ def handle_postback(event):
         result = event.postback.data
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
     elif event.postback.data == '農業科技業':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
         
        
     
