@@ -421,13 +421,18 @@ def handle_message(event):
         #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入你要的選股策略:"))
         #usespeakStrategy=str(event.message.text) #使用者講的話
         
-        #選擇產業類股
-        Carousel_template=stock_template()
-        
-        line_bot_api.reply_message(event.reply_token,Carousel_template)
-        
-        
-        return 0
+        if uid=="U0db823667b9edd2dfea67e380d87cf41":
+            #選擇產業類股
+            Carousel_template=stock_template()
+            
+            line_bot_api.reply_message(event.reply_token,Carousel_template)
+            
+            
+            return 0
+        else:
+            
+            line_bot_api.push_message(uid,TextSendMessage("無權限"))
+            return 0
     
     
     
