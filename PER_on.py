@@ -51,7 +51,7 @@ def PER_crab(industry_new):
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
     
-    user_agent = UserAgent()
+    #user_agent = UserAgent()
     
     headers = {
             
