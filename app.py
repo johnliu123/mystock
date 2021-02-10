@@ -560,35 +560,351 @@ def handle_postback(event):
         # 回復傳入的訊息文字
         line_bot_api.reply_message(event.reply_token,stock_project_template)               
         
+    
+    elif event.postback.data == '塑膠工業':  
         
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '紡織纖維':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    
+    elif event.postback.data == '電機機械':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '電器電纜':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '生技醫療業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '化學工業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '玻璃陶瓷':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '造紙工業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '鋼鐵工業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '橡膠工業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '汽車工業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '電腦及週邊設備業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '半導體業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '電子零組件業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '其他電子業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '通信網路業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '資訊服務業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '建材營造業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '航運業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '觀光事業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '銀行業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '保險業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)  
+    
+    elif event.postback.data == '金控業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template) 
+    
+    elif event.postback.data == '貿易百貨業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template) 
+    
+    
 
     elif event.postback.data == '光電業':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
     
     elif event.postback.data == '電子通路業':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
     
     elif event.postback.data == '證券業':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-    
-    elif event.postback.data == '其他業':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
-    
-    elif event.postback.data == '油電燃氣業':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
         
-    elif event.postback.data == '電子商務':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        industry=event.postback.data
         
-    elif event.postback.data == '文化創意業':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
+    
+    elif event.postback.data == '其他業':
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
+    
+    elif event.postback.data == '油電燃氣業':
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
+        
+    elif event.postback.data == '電子商務':
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
+        
+    elif event.postback.data == '文化創意業': 
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)
+        
     elif event.postback.data == '農業科技業':  
         
         industry=event.postback.data
