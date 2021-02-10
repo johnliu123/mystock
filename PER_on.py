@@ -6,35 +6,7 @@ Created on Wed Feb 10 09:22:26 2021
 @author: johnliu
 """
 
-"""
-from flask import Flask, request, abort
 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import *
-
-import mongodb
-
-from linebot.models import (
-    MessageEvent,
-    TextSendMessage,
-    TemplateSendMessage,
-    ButtonsTemplate,
-    MessageTemplateAction,
-    PostbackEvent,
-    PostbackAction,
-    CarouselColumn,
-    CarouselTemplate,
-    PostbackTemplateAction
-)
-
-
-
-"""
 
 import requests
 from bs4 import BeautifulSoup
