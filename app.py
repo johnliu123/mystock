@@ -864,7 +864,6 @@ def handle_postback(event):
     
     elif event.postback.data == '水泥工業':  
         
-        #if 判斷 是否 industry＝水泥工業
         industry=event.postback.data
         
         save_industry(industry)
@@ -875,7 +874,16 @@ def handle_postback(event):
         line_bot_api.reply_message(event.reply_token,stock_project_template)
                         
                         
-                   
+    elif event.postback.data == '食品工業':  
+        
+        industry=event.postback.data
+        
+        save_industry(industry)
+        
+        stock_project_template=stock_propose_template()
+        
+        # 回復傳入的訊息文字
+        line_bot_api.reply_message(event.reply_token,stock_project_template)               
         
         
 
@@ -918,7 +926,6 @@ def handle_postback(event):
         
         
         #result=test()
-        #if 判斷 是否 industry＝水泥工業 傳到stock_crab方法裡
         result=stock_crab()
         
         
