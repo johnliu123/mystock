@@ -924,9 +924,8 @@ def handle_postback(event):
         
         industry_new=save_industry(industry="")
         
-        params = {"message":industry_new}
         
-        #params = {"message":"水泥工業"+result}
+        params = {"message":industry_new+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers2, params=params)
         
