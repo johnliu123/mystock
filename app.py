@@ -77,6 +77,16 @@ def test():
     
     return result
 
+#global 定義全域變數 交換變數
+def save_industry(industry):
+    global industry_new
+    if industry !="":
+        industry_new=industry
+        return industry_new
+    else:
+        return industry_new
+    
+
 
 def stock_propose_template():
     
@@ -857,6 +867,8 @@ def handle_postback(event):
         #if 判斷 是否 industry＝水泥工業
         industry=event.postback.data
         
+        save_industry(industry)
+        
         stock_project_template=stock_propose_template()
         
         # 回復傳入的訊息文字
@@ -909,8 +921,10 @@ def handle_postback(event):
         #if 判斷 是否 industry＝水泥工業 傳到stock_crab方法裡
         result=stock_crab()
         
-        if industry=="水泥工業":
-            params = {"message":industry+result}
+        
+        industry_new=save_industry(industry="")
+        
+        params = {"message":industry_new}
         
         #params = {"message":"水泥工業"+result}
         r = requests.post("https://notify-api.line.me/api/notify",
