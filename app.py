@@ -377,6 +377,11 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
     
+    elif re.match('測試',usespeak): # 取得id
+        line_bot_api.push_message(uid,TextSendMessage("你的id"+event.source.userId))
+        
+        return 0
+    
     
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
