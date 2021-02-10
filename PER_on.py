@@ -6,35 +6,7 @@ Created on Wed Feb 10 09:22:26 2021
 @author: johnliu
 """
 
-"""
-from flask import Flask, request, abort
 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import *
-
-import mongodb
-
-from linebot.models import (
-    MessageEvent,
-    TextSendMessage,
-    TemplateSendMessage,
-    ButtonsTemplate,
-    MessageTemplateAction,
-    PostbackEvent,
-    PostbackAction,
-    CarouselColumn,
-    CarouselTemplate,
-    PostbackTemplateAction
-)
-
-
-
-"""
 
 import requests
 from bs4 import BeautifulSoup
@@ -76,9 +48,6 @@ def PER_crab(industry_new):
     #請求網站
     list_req = requests.post(url, headers = headers)
     
-    #result=str(list_req)
-    #return result
-    
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
     
@@ -95,7 +64,6 @@ def PER_crab(industry_new):
         stock_mun_list.append(num.text)
         #result=str(num.text)
         
-    
     
     #去除重複的股票代碼
     stock_mun_list=np.unique(stock_mun_list).tolist()
@@ -170,8 +138,5 @@ def PER_crab(industry_new):
         
     
     result='相關類股其本益比<=15適合購買的股票為:'+'\n'+result_stock
-    #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
-    #r = requests.post("https://notify-api.line.me/api/notify",
-                                              #headers=headers2, params=params)
     
     return result
