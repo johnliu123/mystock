@@ -383,13 +383,16 @@ def handle_message(event):
         
         #line_bot_api.reply_message(event.reply_token,"請輸入您的姓名")
         line_bot_api.push_message(uid,TextSendMessage("請輸入您的姓名"))
-        if event.message.text !="":
-            username=str(event.message.text)
-            line_bot_api.reply_message(uid,"請輸入您的token碼")
-            #line_bot_api.push_message(uid,TextSendMessage("請輸入您的token碼"))
+        username=str(event.message.text)
+        if re.match('[^0-9]',username):
+        #if event.message.text !="":
             
-            if event.message.text !="":
-                usertoken=str(event.message.text)
+            #line_bot_api.reply_message(uid,"請輸入您的token碼")
+            line_bot_api.push_message(uid,TextSendMessage("請輸入您的token碼"))
+            usertoken=str(event.message.text)
+            if re.match('[^0-9]',usertoken):
+            #if event.message.text !="":
+                #usertoken=str(event.message.text)
                 mongodb.write_user_information_fountion(uid,username,usertoken)
         
         return 0
