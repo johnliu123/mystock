@@ -385,7 +385,7 @@ def handle_message(event):
         line_bot_api.push_message(uid,TextSendMessage("請輸入您的姓名"))
         if event.message.text !="":
             username=str(event.message.text)
-            line_bot_api.reply_message(event.reply_token,"請輸入您的token碼")
+            line_bot_api.reply_message(uid,"請輸入您的token碼")
             #line_bot_api.push_message(uid,TextSendMessage("請輸入您的token碼"))
             
             if event.message.text !="":
