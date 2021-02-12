@@ -93,7 +93,6 @@ def stock_propose_template():
     return stock_project_template
     
 
-
 def stock_template():
     
     Carousel_template = TemplateSendMessage(
@@ -378,7 +377,15 @@ def handle_message(event):
         return 0
     
     elif re.match('測試',usespeak): # 取得id
-        line_bot_api.push_message(uid,TextSendMessage("你的id"+uid))
+        #line_bot_api.push_message(uid,TextSendMessage("你的id"+uid))
+        #line_bot_api.push_message(uid,TextSendMessage("測試"))
+        #line_bot_api.reply_message(event.reply_token,"測試")
+        
+        line_bot_api.push_message(uid,TextSendMessage("請輸入您的姓名"))
+        username=str(event.message.text)
+        line_bot_api.push_message(uid,TextSendMessage("請輸入您的token碼"))
+        usertoken=str(event.message.text)
+        mongodb.write_user_information_fountion(uid,username,usertoken)
         
         return 0
     

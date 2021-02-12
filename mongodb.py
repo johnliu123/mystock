@@ -41,4 +41,10 @@ def show_user_stock_fountion():
     return cel
 
 
-
+def write_user_information_fountion(uid,username,usertoken):  
+    db=constructor()
+    collect = db['user']
+    collect.insert({"userid": uid,
+                    "name": username,
+                    "token": usertoken
+                    })
