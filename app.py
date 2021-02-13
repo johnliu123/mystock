@@ -384,9 +384,9 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的姓名"))
         #line_bot_api.push_message(uid,TextSendMessage("請輸入您的姓名"))
         
-        username=str(event.message.text)
-        if username=="test":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+username))
+        #username=str(event.message.text)
+        #if username=="test":
+           #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+username))
         """
         if re.match('[^0-9]',username):
         #if event.message.text !="":
@@ -401,6 +401,12 @@ def handle_message(event):
         """
         
         return 0
+    
+    elif re.match("姓名{4}","姓名"+usespeak): # 取得id
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+usespeak))
+        
+        return 0
+    
     
     
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
