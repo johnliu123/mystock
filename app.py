@@ -402,7 +402,7 @@ def handle_message(event):
         
         return 0
     
-    elif re.match("姓名{4}","姓名"+usespeak): # 取得id
+    elif re.match("姓名[^0-9]{4}","姓名"+usespeak): # 取得id
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+usespeak))
         
         return 0
