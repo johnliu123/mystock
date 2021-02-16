@@ -421,6 +421,7 @@ def handle_message(event):
     
     elif re.match("token[a-zA-Z0-9]",usespeak): # 取得id
         datalist=data_list(name="",token=usespeak)
+        mongodb.write_user_information_fountion(uid,datalist[0],datalist[1])
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+datalist[0]+"與"+datalist[1]))
         
         return 0
