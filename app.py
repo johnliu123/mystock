@@ -62,6 +62,17 @@ def save_industry(industry):
         return industry_new
     
 
+def data_list(name,token):
+    if name !="":
+        global datalist
+        datalist=[]
+        name=name
+        datalist.append(name)
+        
+    else:
+        datalist.append(token)
+    return datalist
+
 
 def stock_propose_template():
     
@@ -402,11 +413,17 @@ def handle_message(event):
         
         return 0
     
-    elif re.match("姓名[^0-9]{4}",usespeak): # 取得id
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+usespeak))
+    elif re.match("姓名[^0-9]",usespeak): # 取得id
+        data_list(name=usespeak,token="")
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的token碼"))
         
         return 0
     
+    elif re.match("token[a-zA-Z0-9]",usespeak): # 取得id
+        datalist=data_list(name="",token=usespeak)
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+datalist[0]+"與"+datalist[1]))
+        
+        return 0
     
     
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
