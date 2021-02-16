@@ -393,6 +393,7 @@ def handle_message(event):
         #line_bot_api.reply_message(event.reply_token,"測試")
         
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的姓名"))
+        usespeak="姓名"+usespeak
         #line_bot_api.push_message(uid,TextSendMessage("請輸入您的姓名"))
         
         #username=str(event.message.text)
