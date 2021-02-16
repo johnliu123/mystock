@@ -414,15 +414,15 @@ def handle_message(event):
         return 0
     
     elif re.match("姓名[^0-9]",usespeak): # 取得id
-        data_list(name=usespeak,token="")
+        data_list(name=usespeak[2:],token="")
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的token碼"))
         
         return 0
     
     elif re.match("token[a-zA-Z0-9]",usespeak): # 取得id
-        datalist=data_list(name="",token=usespeak)
+        datalist=data_list(name="",token=usespeak[5:])
         mongodb.write_user_information_fountion(uid,datalist[0],datalist[1])
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+datalist[0]+"與"+datalist[1]))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已新增+您的姓名:"+datalist[0]+"及token:"+datalist[1]))
         
         return 0
     
