@@ -413,7 +413,7 @@ def handle_message(event):
         
         return 0
     
-    elif re.match("姓名[^0-9]","姓名"+usespeak): # 取得id
+    elif re.match("姓名[^a-zA-Z0-9]","姓名"+usespeak): # 取得id
         data_list(name=usespeak,token="")
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的token碼"))
         
