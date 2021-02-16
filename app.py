@@ -387,6 +387,45 @@ def handle_message(event):
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
     
+    elif re.match('測試',usespeak): # 取得id
+        #line_bot_api.push_message(uid,TextSendMessage("你的id"+uid))
+        #line_bot_api.push_message(uid,TextSendMessage("測試"))
+        #line_bot_api.reply_message(event.reply_token,"測試")
+        
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的姓名"))
+        #line_bot_api.push_message(uid,TextSendMessage("請輸入您的姓名"))
+        
+        #username=str(event.message.text)
+        #if username=="test":
+           #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+username))
+        """
+        if re.match('[^0-9]',username):
+        #if event.message.text !="":
+            
+            #line_bot_api.reply_message(uid,"請輸入您的token碼")
+            line_bot_api.push_message(uid,TextSendMessage("請輸入您的token碼"))
+            usertoken=str(event.message.text)
+            if re.match('[^0-9]',usertoken):
+            #if event.message.text !="":
+                #usertoken=str(event.message.text)
+                mongodb.write_user_information_fountion(uid,username,usertoken)
+        """
+        
+        return 0
+    
+    elif re.match("姓名[^0-9]",usespeak): # 取得id
+        data_list(name=usespeak[2:],token="")
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的token碼"))
+        
+        return 0
+    
+    elif re.match("token[a-zA-Z0-9]",usespeak): # 取得id
+        datalist=data_list(name="",token=usespeak[5:])
+        mongodb.write_user_information_fountion(uid,datalist[0],datalist[1])
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已新增 您的姓名:"+datalist[0]+"及token碼:"+datalist[1]))
+        
+        return 0
+    
     
     elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
@@ -440,47 +479,6 @@ def handle_message(event):
             return 0
     
     
-    
-    if usespeak=="測試":
-    
-        if re.match('測試',usespeak): # 取得id
-            #line_bot_api.push_message(uid,TextSendMessage("你的id"+uid))
-            #line_bot_api.push_message(uid,TextSendMessage("測試"))
-            #line_bot_api.reply_message(event.reply_token,"測試")
-            
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的姓名"))
-            #line_bot_api.push_message(uid,TextSendMessage("請輸入您的姓名"))
-            
-            #username=str(event.message.text)
-            #if username=="test":
-               #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已輸入"+username))
-            """
-            if re.match('[^0-9]',username):
-            #if event.message.text !="":
-                
-                #line_bot_api.reply_message(uid,"請輸入您的token碼")
-                line_bot_api.push_message(uid,TextSendMessage("請輸入您的token碼"))
-                usertoken=str(event.message.text)
-                if re.match('[^0-9]',usertoken):
-                #if event.message.text !="":
-                    #usertoken=str(event.message.text)
-                    mongodb.write_user_information_fountion(uid,username,usertoken)
-            """
-            
-            return 0
-        
-        elif re.match("姓名[^a-zA-Z0-9]","姓名"+usespeak): # 取得id
-            data_list(name=usespeak,token="")
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="請輸入您的token碼"))
-            
-            return 0
-        
-        elif re.match("token[a-zA-Z0-9]","token"+usespeak): # 取得id
-            datalist=data_list(name="",token=usespeak)
-            mongodb.write_user_information_fountion(uid,datalist[0],datalist[1])
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已新增 您的姓名:"+datalist[0]+"及token碼:"+datalist[1]))
-            
-            return 0
     
       
 @handler.add(PostbackEvent)
