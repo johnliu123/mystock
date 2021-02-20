@@ -151,10 +151,10 @@ def Ydr_crab(industry_new):
         #result_stock_list.append(result)
     
     
-    print(industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock)
+    #print(industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock)
     
-    params = {"message": industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock}
-    r = requests.post("https://notify-api.line.me/api/notify",
-                                              headers=headers, params=params)
+    #params = {"message": industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock}
+    #r = requests.post("https://notify-api.line.me/api/notify",
+                                              #headers=headers, params=params)
     
     return result
