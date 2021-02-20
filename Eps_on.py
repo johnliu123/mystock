@@ -20,7 +20,7 @@ def Eps_crab(industry_new):
     
     
     # 要抓取的網址
-    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=年獲利能力_近N年一覽&SHEET2=EPS年成長率(%25)&RPT_TIME=最新資料'
+    url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=年獲利能力_近N年一覽&SHEET2=EPS(元)&RPT_TIME=最新資料'
     #user_agent = UserAgent()
     
     headers = {
@@ -46,40 +46,76 @@ def Eps_crab(industry_new):
     #請求網站
     list_req = requests.post(url, headers = headers)
     
-    #result=str(list_req)
-    #return result
     
     #將整個網站的程式碼爬下來
     soup = BeautifulSoup(list_req.content, "html.parser")
     
-    stockEps=soup.find_all(id=re.compile('^row'))
+    stock_result=soup.find_all("a", { "class" : "link_black","style":"cursor:pointer;"})
 
-    #取出股票代號及EPS結果
+    #取出近3年EPS欄位名稱
+    stock_name_list=[]
+    for i in range(0,19):
+        name=stock_result[i].text
+        if i >=15:
+            stock_name_list.append(name)
+    
+    
+    stockEps=soup.find_all(id=re.compile('^row'))
+    
     
     stock_num_list=[]
-    stock_Eps_list=[]
+    #計算倒數前4個table
+    stockEps_reciprocal1_table=[]
+    stockEps_reciprocal2_table=[]
+    stockEps_reciprocal3_table=[]
+    stockEps_reciprocal4_table=[]
+    stockEpsYr_list=[stockEps_reciprocal1_table,stockEps_reciprocal2_table,stockEps_reciprocal3_table,stockEps_reciprocal4_table]
     
-    for Eps in range(0,len(stockEps)):
-        stocknum=stockEps[Eps].find_all('nobr')[0].text
-        resultEPS=stockEps[Eps].find_all('nobr')[-1].text
-        stock_num_list.append(stocknum)
-        stock_Eps_list.append(resultEPS)
     
+    #取出近3年的EPS數值
+    table=-1
+    for stocklist in stockEpsYr_list:
+        for num in range(0,len(stockEps)):
+            result=stockEps[num].find_all('nobr')[table].text
+            stocklist.append(result)
+        table=table-1
+    
+    
+    #取出代號
+    for num in range(0,len(stockEps)):
+        result=stockEps[num].find_all('nobr')[0].text
+        stock_num_list.append(result)
     
     
     #欄位合併
-    stockresult_list={"代號":stock_num_list,"EPS年成長率(%)":stock_Eps_list}
+    stockresult_list={"代號":stock_num_list,stock_name_list[0]:stockEps_reciprocal4_table,stock_name_list[1]:stockEps_reciprocal3_table,stock_name_list[2]:stockEps_reciprocal2_table
+                     ,stock_name_list[3]:stockEps_reciprocal1_table}
     df_stock=pd.DataFrame(stockresult_list)
     
     
-    df_stock=df_stock[df_stock['EPS年成長率(%)'].str.contains("\+")]
+    #去除空白
+    df_stock = df_stock.replace(r'^\s*$', np.nan, regex=True)
     
     
-    df_stock_num_result=df_stock["代號"].tolist()
+    #判斷第3行欄位空值數量 只取3年的EPS
+    isnanum=df_stock[df_stock.columns[3]].isna().sum()
+    if isnanum>10:
+        df_stock=df_stock.drop([df_stock.columns[3]],axis=1)
+    else:
+        df_stock=df_stock.drop([df_stock.columns[1]],axis=1)
+        
+    
+    for i in df_stock.iloc[:,1:]:
+        df_stock[i]=df_stock[i].astype(str).astype(float)
+    
+    
+    df_stock_result=df_stock.loc[(df_stock[df_stock.columns[1]]>=1.5)&(df_stock[df_stock.columns[2]]>=1.5)&(df_stock[df_stock.columns[3]]>=1.5)]
+    
+    df_stock_num_result=df_stock_result["代號"].tolist()
     
     
     result_stock=""
-    
+
     for i in df_stock_num_result:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
         #請求網站
@@ -99,18 +135,14 @@ def Eps_crab(industry_new):
         result_stock+=result+'\n'
         #print(result_stock)
         #result_stock_list.append(result)
-    #print(industry_new+'相關類股其今年累計EPS年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock)
+    #print(industry_new+'相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock)
     
-    result=industry_new+'相關類股其今年累計EPS年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock
+    result=industry_new+'相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock
     
-    
-    
-    params = {"message": industry_new+'相關類股其今年累計EPS年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock}
-    r = requests.post("https://notify-api.line.me/api/notify",
-                                              headers=headers, params=params)
-
+    #params = {"message": industry_new+'相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock}
+    #r = requests.post("https://notify-api.line.me/api/notify",
+                                              #headers=headers, params=params)
     
     
-    
-    
+        
     return result
