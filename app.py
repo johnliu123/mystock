@@ -10,6 +10,8 @@ from linebot.exceptions import (
 from linebot.models import *
 import mongodb
 import PER_on
+import Eps_on
+import Ydr_on
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -988,13 +990,25 @@ def handle_postback(event):
         
     
     elif event.postback.data == '殖利率':
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        industry_new=save_industry(industry="")
+        
+        result=Ydr_on.Ydr_crab(industry_new)
+        
+        
+        params = {"message":industry_new+result}
+        r = requests.post("https://notify-api.line.me/api/notify",
+                                          headers=headers, params=params)
     
     
     elif event.postback.data == 'EPS':  
-        result = event.postback.data
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您選擇的是"+result))
+        industry_new=save_industry(industry="")
+        
+        result=Eps_on.Eps_crab(industry_new)
+        
+        
+        params = {"message":industry_new+result}
+        r = requests.post("https://notify-api.line.me/api/notify",
+                                          headers=headers, params=params)
 
      
 
