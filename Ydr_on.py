@@ -153,7 +153,7 @@ def Ydr_crab(industry_new):
     
     #print(industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock)
      
-    result=industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock
+    result='相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock
     
     
     #params = {"message": industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock}

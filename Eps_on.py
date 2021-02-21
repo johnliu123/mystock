@@ -139,7 +139,7 @@ def Eps_crab(industry_new):
         #result_stock_list.append(result)
     #print(industry_new+'相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock)
     
-    result=industry_new+'相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock
+    result='相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock
     
     #params = {"message": industry_new+'相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock}
     #r = requests.post("https://notify-api.line.me/api/notify",
