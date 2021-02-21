@@ -100,6 +100,8 @@ def Eps_crab(industry_new):
     #判斷第3行欄位空值數量 只取3年的EPS
     isnanum=df_stock[df_stock.columns[3]].isna().sum()
     if isnanum>10:
+        #空值填補至2020Q3 (新調整的部分)
+        df_stock.loc[df_stock[df_stock.columns[4]].isnull(),df_stock.columns[4]]=df_stock[df_stock.columns[3]]
         df_stock=df_stock.drop([df_stock.columns[3]],axis=1)
     else:
         df_stock=df_stock.drop([df_stock.columns[1]],axis=1)
