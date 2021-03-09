@@ -458,8 +458,8 @@ def handle_message(event):
               price=i['price']
               stock_price.append(stock)
               
-        symbol=">"
-        spilt_stock_info=usespeak.split(">")
+        
+        spilt_stock_info=usespeak.split("價格")
         
         if spilt_stock_info[0] in stock_price:              
             url = 'https://tw.stock.yahoo.com/q/q?s=' + spilt_stock_info[0]
