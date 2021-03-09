@@ -384,9 +384,7 @@ def handle_message(event):
         
             symbol=">"
             spilt_stock_info=usespeak.split(">")
-            #stock=spilt_stock_info[0]
-            #price=spilt_stock_info[1]
-            
+        
             mongodb.write_user_stock_fountion(stock=spilt_stock_info[0], bs=symbol, price=spilt_stock_info[1])
             line_bot_api.push_message(uid, TextSendMessage(spilt_stock_info[0]+'已經儲存成功'))
             
@@ -396,16 +394,14 @@ def handle_message(event):
         
             symbol="<"
             spilt_stock_info=usespeak.split("<")
-            #stock=spilt_stock_info[0]
-            #price=spilt_stock_info[1]
-            
+           
             mongodb.write_user_stock_fountion(stock=spilt_stock_info[0], bs=symbol, price=spilt_stock_info[1])
             line_bot_api.push_message(uid, TextSendMessage(spilt_stock_info[0]+'已經儲存成功'))
     
             return 0
 
     
-    elif re.match('刪除[0-9]{4}',usespeak): # 刪除存在資料庫裡面的股票
+    elif re.match('刪除[0-9]{4,5}',usespeak): # 刪除存在資料庫裡面的股票
         mongodb.delete_user_stock_fountion(stock=usespeak[2:])
         line_bot_api.push_message(uid, TextSendMessage(usespeak+'已經刪除成功'))
         return 0
@@ -450,7 +446,7 @@ def handle_message(event):
         return 0
     
     
-    elif re.match('[0-9]{4}價格',usespeak): # 先判斷是否是使用者要用來存股票的
+    elif re.match('[0-9]{4,5}價格',usespeak): # 先判斷是否是使用者要用來存股票的
         
         data = mongodb.show_user_stock_fountion()
 
@@ -462,8 +458,11 @@ def handle_message(event):
               price=i['price']
               stock_price.append(stock)
               
-        if usespeak[0:4] in stock_price:              
-            url = 'https://tw.stock.yahoo.com/q/q?s=' + usespeak[0:4] 
+        symbol=">"
+        spilt_stock_info=usespeak.split(">")
+        
+        if spilt_stock_info[0] in stock_price:              
+            url = 'https://tw.stock.yahoo.com/q/q?s=' + spilt_stock_info[0]
             list_req = requests.get(url)
             soup = BeautifulSoup(list_req.text, "html.parser")
             tables=soup.find_all('table')[1] #裡面所有文字內容
@@ -472,13 +471,13 @@ def handle_message(event):
             tds=tables.find_all("td")[3]
             getstock= tds.find('b').text
             getstock=float(getstock)
-            get=str(usespeak[0:4])+a+' 的價格：' + str(getstock)
+            get=str(spilt_stock_info[0])+a+' 的價格：' + str(getstock)
             line_bot_api.push_message(uid, TextSendMessage(get))
 
                
         else:
             #print("查無此股票價格！！")
-            line_bot_api.push_message(uid,TextSendMessage(usespeak[0:4]+"查無此股票價格！！"))
+            line_bot_api.push_message(uid,TextSendMessage(spilt_stock_info[0]+"查無此股票價格！！"))
               
         return 0
     
