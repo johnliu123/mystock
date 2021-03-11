@@ -14,6 +14,7 @@ import re
 #from fake_useragent import UserAgent
 import pandas as pd
 import numpy as np
+import stockmd
 
 
 def Ydr_crab(industry_new):

@@ -14,6 +14,7 @@ import re
 #from fake_useragent import UserAgent
 import pandas as pd
 import numpy as np
+import stockmd
 
 
 def Eps_crab(industry_new):
@@ -116,6 +117,9 @@ def Eps_crab(industry_new):
     df_stock_num_result=df_stock_result["代號"].tolist()
     
     
+    result_stock=stockmd.stock_result(headers,df_stock_num_result)
+    
+    """
     result_stock=""
 
     for i in df_stock_num_result:
@@ -143,7 +147,9 @@ def Eps_crab(industry_new):
         result_stock+=result+'\n'
         #print(result_stock)
         #result_stock_list.append(result)
+    """
     #print(industry_new+'相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock)
+    
     
     result='相關類股其近三年EPS>=1.5，適合購買的股票為:'+'\n'+result_stock
     
