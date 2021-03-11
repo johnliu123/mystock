@@ -127,8 +127,9 @@ def Ydr_crab(industry_new):
     
     df_stock_num_result=df_stock_result["代號"].tolist()
     
+    result_stock=stockmd.stock_result(headers,df_stock_num_result)
     
-    
+    """
     result_stock=""
     
     for i in df_stock_num_result:
@@ -157,9 +158,11 @@ def Ydr_crab(industry_new):
         #print(result_stock)
         #result_stock_list.append(result)
     
+    """
     
     #print(industry_new+'相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock)
-     
+    
+    
     result='相關類股其近五年Ydr>=5，適合購買的股票為:'+'\n'+result_stock
     
     
