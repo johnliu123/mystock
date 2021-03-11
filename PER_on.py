@@ -14,7 +14,7 @@ import re
 #from fake_useragent import UserAgent
 
 import numpy as np
-
+import stockmd
 
 def PER_crab(industry_new):
     
@@ -74,7 +74,7 @@ def PER_crab(industry_new):
     
     
     
-    stock1=[]
+    stock=[]
 
     for num in stock_mun_list:
         #print(num)
@@ -105,7 +105,7 @@ def PER_crab(industry_new):
                     
                     if PBR<avrPBR:
                         #print('本益比小')
-                        stock1.append(num)
+                        stock.append(num)
                     else:
                         #print('本益比大')
                         pass
@@ -118,9 +118,13 @@ def PER_crab(industry_new):
     
     
     #result_stock_list=[]
+    
+    result_stock=stockmd.stock_result(headers,stock)
+    
+    """
     result_stock=''
     
-    for i in stock1:
+    for i in stock:
         url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+i+'.djhtm'
         #請求網站
         list_req1 = requests.post(url1, headers = headers)
@@ -145,7 +149,7 @@ def PER_crab(industry_new):
         result_stock+=result+'\n'
         #print(result_stock)
         #result_stock_list.append(result)
-        
+     """   
     
     result='相關類股其本益比<=15適合購買的股票為:'+'\n'+result_stock
     #params = {"message": '半導體業相關類股其本益比較小適合購買的股票為:'+'\n'+result_stock}
