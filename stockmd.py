@@ -12,12 +12,11 @@ from fake_useragent import UserAgent
 
 def get_headers():
     
-    token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd' 
+    #token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd' 
     
     #user_agent = UserAgent()
     headers = {
-        
-        "Authorization": "Bearer " + token,
+        "Authorization": "Bearer " + "YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd",
         "Content-Type": "application/x-www-form-urlencoded",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
         "Accept-Encoding": "gzip, deflate, br", 
@@ -31,6 +30,7 @@ def get_headers():
         #"User-Agent":user_agent.random,
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36", #使用者代理
         "Referer": "https://www.google.com/"
+        
     }
 
     return headers
