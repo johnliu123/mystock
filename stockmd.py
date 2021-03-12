@@ -8,34 +8,6 @@ Created on Thu Mar 11 23:19:42 2021
 
 import requests
 from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
-
-
-def get_headers():
-    
-    user_agent = UserAgent()
-    
-    token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd' 
-    
-    headers = {
-        
-        "Authorization": "Bearer " + token,
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
-        "Accept-Encoding": "gzip, deflate, br", 
-        "Accept-Language": "zh-TW,zh;q=0.9", 
-        #"Host": "goodinfo.tw/StockInfo/index.asp",  #目標網站 
-        "Sec-Fetch-Dest": "document", 
-        "Sec-Fetch-Mode": "navigate", 
-        "Sec-Fetch-Site": "none", 
-        "Upgrade-Insecure-Requests": "1", 
-        #隨機設定 使用者代理(User-Agent)
-        #"User-Agent":user_agent.random,
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36", #使用者代理
-        "Referer": "https://www.google.com/"
-}
-
-    return headers
 
 
 def stock_result(headers,stock):
