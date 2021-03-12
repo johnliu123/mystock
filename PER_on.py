@@ -23,6 +23,8 @@ def PER_crab(industry_new):
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
     
+    
+    """
     #user_agent = UserAgent()
     
     headers = {
@@ -42,8 +44,9 @@ def PER_crab(industry_new):
         "Referer": "https://www.google.com/"
         
     }
+    """
     
-    
+    headers=stockmd.get_headers()
     
     #請求網站
     list_req = requests.post(url, headers = headers)
@@ -79,12 +82,12 @@ def PER_crab(industry_new):
     for num in stock_mun_list:
         #print(num)
         try:
-            url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
+            url_PBR='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
             #請求網站
-            list_req1 = requests.post(url1, headers = headers)
+            list_req_PBR = requests.post(url_PBR, headers = headers)
             #將整個網站的程式碼爬下來
-            soup1 = BeautifulSoup(list_req1.text, "html.parser")
-            tr=soup1.find_all('tr')[6]
+            soup_PBR = BeautifulSoup(list_req_PBR.text, "html.parser")
+            tr=soup_PBR.find_all('tr')[6]
             td=tr.find_all('td')[1]
             PBR= td.text
             PBR=PBR.replace(",", "")
@@ -94,9 +97,9 @@ def PER_crab(industry_new):
                 #continue
                 #break
             else:
-                tr1=soup1.find_all('tr')[7]
-                td1=tr1.find_all('td')[1]
-                avrPBR= td1.text
+                tr_PBR=soup_PBR.find_all('tr')[7]
+                td_PBR=tr_PBR.find_all('td')[1]
+                avrPBR= td_PBR.text
                 PBR=float(PBR)
                 avrPBR=avrPBR.replace(",", "")
                 avrPBR=float(avrPBR)
