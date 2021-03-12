@@ -12,12 +12,12 @@ from bs4 import BeautifulSoup
 
 def get_headers():
     
-    #token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd' 
+    token='YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd' 
     
     #user_agent = UserAgent()
     headers = {
     
-    "Authorization": "Bearer " + "YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd",
+    "Authorization": "Bearer " + token,
     "Content-Type": "application/x-www-form-urlencoded",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
     "Accept-Encoding": "gzip, deflate, br", 
