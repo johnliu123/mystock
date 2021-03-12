@@ -33,7 +33,6 @@ from linebot.models import (
 
 
 
-
 headers = {
     
     "Authorization": "Bearer " + "YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd",

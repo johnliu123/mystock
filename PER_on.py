@@ -23,9 +23,6 @@ def PER_crab(industry_new):
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=交易狀況&SHEET2=日&RPT_TIME=最新資料'
     
     
-    headers=stockmd.get_headers()
-    
-    """
     #user_agent = UserAgent()
     
     headers = {
@@ -43,10 +40,9 @@ def PER_crab(industry_new):
         #"User-Agent":user_agent.random,
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36", #使用者代理
         "Referer": "https://www.google.com/"
-    
-    
+        
     }
-    """
+    
     
     
     #請求網站
@@ -83,12 +79,12 @@ def PER_crab(industry_new):
     for num in stock_mun_list:
         #print(num)
         try:
-            url_PER='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
+            url1='http://jsjustweb.jihsun.com.tw/z/zc/zca/zca_'+num+'.djhtm'
             #請求網站
-            list_req_PER = requests.post(url_PER, headers = headers)
+            list_req1 = requests.post(url1, headers = headers)
             #將整個網站的程式碼爬下來
-            soup_PER = BeautifulSoup(list_req_PER.text, "html.parser")
-            tr=soup_PER.find_all('tr')[6]
+            soup1 = BeautifulSoup(list_req1.text, "html.parser")
+            tr=soup1.find_all('tr')[6]
             td=tr.find_all('td')[1]
             PBR= td.text
             PBR=PBR.replace(",", "")
@@ -98,9 +94,9 @@ def PER_crab(industry_new):
                 #continue
                 #break
             else:
-                tr_PER=soup_PER.find_all('tr')[7]
-                td_PER=tr_PER.find_all('td')[1]
-                avrPBR= td_PER.text
+                tr1=soup1.find_all('tr')[7]
+                td1=tr1.find_all('td')[1]
+                avrPBR= td1.text
                 PBR=float(PBR)
                 avrPBR=avrPBR.replace(",", "")
                 avrPBR=float(avrPBR)
