@@ -22,6 +22,9 @@ def Ydr_crab(industry_new):
     
     # 要抓取的網址
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=股利政策發放年度_近N年股利一覽&SHEET2=現金%2B股票年均殖利率&RPT_TIME=最新資料'
+    
+    
+    """
     #user_agent = UserAgent()
     
     headers = {
@@ -41,8 +44,9 @@ def Ydr_crab(industry_new):
         "Referer": "https://www.google.com/"
         
     }
+    """
     
-    
+    headers=stockmd.get_headers()
     
     #請求網站
     list_req = requests.post(url, headers = headers)

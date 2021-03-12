@@ -22,6 +22,8 @@ def Eps_crab(industry_new):
     
     # 要抓取的網址
     url = 'https://goodinfo.tw/StockInfo/StockList.asp?MARKET_CAT=全部&INDUSTRY_CAT='+industry_new+'&SHEET=年獲利能力_近N年一覽&SHEET2=EPS(元)&RPT_TIME=最新資料'
+    
+    """
     #user_agent = UserAgent()
     
     headers = {
@@ -41,8 +43,10 @@ def Eps_crab(industry_new):
         "Referer": "https://www.google.com/"
         
     }
+    """
     
     
+    headers=stockmd.get_headers()
     
     #請求網站
     list_req = requests.post(url, headers = headers)
