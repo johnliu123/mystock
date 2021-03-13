@@ -82,7 +82,8 @@ def Gm_crab(industry_new):
     
     df_stock_num_result=df_stock["代號"].tolist()
     
-    result_stock=stockmd.stock_result(headers,stock)
+    result_stock=stockmd.stock_result(headers,df_stock_num_result)
+    
     
     """
     result_stock=""
