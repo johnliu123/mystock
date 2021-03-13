@@ -46,16 +46,17 @@ headers = {
 
 def job():
     
-    data = mongodb.show_user_stock_fountion()
+
+    data =mongodb.show_user_stock_fountion()
     
     for i in data:
         stock=i['stock']
         bs=i['bs']
         price=i['price']
-        
-        #yahoo的 要使用list_req.text
+
         url = 'https://tw.stock.yahoo.com/q/q?s=' + stock 
-        list_req = requests.get(url, headers = headers)
+        list_req = requests.get(url)
+    
         
         try:
             #要使用list_req.text 不是使用list_req.content不然會有亂碼
@@ -65,8 +66,12 @@ def job():
             a=table1.find_all("a")[0].text[4:]#股票名稱
             tds=tables.find_all("td")[3]
             getstock= tds.find('b').text
+            #print(getstock)
         
-            if float(getstock):
+            if getstock=="-":
+              pass
+
+            elif float(getstock):
                 if bs == '<':
                     if float(getstock) < price:
                         get=stock+a+ ' 的價格：'+str(getstock)+' 已低於您設定的價格'+str(price)+'元，'+'即可買入！！'
@@ -81,14 +86,15 @@ def job():
                         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
                         print(get)
-            else:
-                params = {"message": get}
-                r = requests.post("https://notify-api.line.me/api/notify",
-                                          headers=headers, params=params)
-                print("有問題")
+            # else:
+            #     params = {"message": get}
+            #     r = requests.post("https://notify-api.line.me/api/notify",
+            #                               headers=headers, params=params)
+            #     print("有問題")
         
         except IndexError:
             pass
+        
         
 
 schedule.every(10).seconds.do(job) #每10秒執行一次
@@ -97,7 +103,7 @@ schedule.every(10).seconds.do(job) #每10秒執行一次
 while True: 
     schedule.run_pending()
     #設定隨機的延遲時間 避免相同的request時間
-    delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
+    #delay_choices = [8, 5, 10, 6, 20, 11]  #延遲的秒數
     #delay_choices = [1,2,3]  #延遲的秒數
-    delay = random.choice(delay_choices)  #隨機選取秒數
-    time.sleep(delay)  #延遲
+    #delay = random.choice(delay_choices)  #隨機選取秒數
+    #time.sleep(delay)  #延遲
