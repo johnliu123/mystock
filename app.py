@@ -148,6 +148,16 @@ def stock_propose_template():
                         label='7.營業收入年度成長率',
                         text='7.營業收入年度成長率',
                         data='營業收入年度成長率'
+                        ),
+                    PostbackAction(
+                        label='none',
+                        text='none',
+                        data='none'
+                        ),
+                    PostbackAction(
+                        label='none',
+                        text='none',
+                        data='none'
                         )
                     ]
             )
