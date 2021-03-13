@@ -118,6 +118,27 @@ def stock_propose_template():
                         data='EPS'
                         )
                     ]
+            ),
+            CarouselColumn(
+                title='請輸入你要的選股策略:',
+                text='請選擇選股標的',
+                actions=[
+                    PostbackAction(
+                        label='4.EPS年度成長率',
+                        text='4.EPS年度成長率',
+                        data='EPS年度成長率'
+                        ),
+                    PostbackAction(
+                        label='5.毛利年度成長率',
+                        text='5.毛利年度成長率',
+                        data='毛利年度成長率'
+                        ),
+                    PostbackAction(
+                        label='6.稅後淨利年度成長率',
+                        text='6.稅後淨利年度成長率',
+                        data='稅後淨利年度成長率'
+                        )
+                    ]
             )
             
         ]
