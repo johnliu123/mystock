@@ -1084,7 +1084,7 @@ def handle_postback(event):
         params = {"message":industry_new+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
-        
+    """    
     elif event.postback.data == 'EPS年度成長率':  
         industry_new=save_industry(industry="")
         
@@ -1124,7 +1124,8 @@ def handle_postback(event):
         params = {"message":industry_new+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
-
+    """
+    
      
 
 
