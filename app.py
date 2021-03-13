@@ -149,6 +149,7 @@ def stock_propose_template():
                         text='7.營業收入年度成長率',
                         data='營業收入年度成長率'
                         )
+                    ]
             )
             
         ]
