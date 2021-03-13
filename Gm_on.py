@@ -116,7 +116,7 @@ def Gm_crab(industry_new):
     
     #print(industry_new+'相關類股其今年累計營業毛利年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock)
     
-    result=industry_new+'相關類股其今年累計營業毛利年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock
+    result='相關類股其今年累計營業毛利年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock
     
     
     #params = {"message": industry_new+'相關類股其今年累計營業毛利年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock}

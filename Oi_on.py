@@ -115,7 +115,7 @@ def Oi_crab(industry_new):
     """
     
     
-    result=industry_new+'相關類股其今年累計營業收入年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock
+    result='相關類股其今年累計營業收入年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock
     
     
     

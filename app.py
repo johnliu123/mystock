@@ -1109,7 +1109,7 @@ def handle_postback(event):
     elif event.postback.data == '毛利年度成長率':  
         industry_new=save_industry(industry="")
         
-        result=Gm_on.Eps_crab(industry_new)
+        result=Gm_on.Gm_crab(industry_new)
         
         
         params = {"message":industry_new+result}
@@ -1119,7 +1119,7 @@ def handle_postback(event):
     elif event.postback.data == '稅後淨利年度成長率':  
         industry_new=save_industry(industry="")
         
-        result=Ni_on.Eps_crab(industry_new)
+        result=Ni_on.Ni_crab(industry_new)
         
         
         params = {"message":industry_new+result}
@@ -1129,7 +1129,7 @@ def handle_postback(event):
     elif event.postback.data == '營業收入年度成長率':  
         industry_new=save_industry(industry="")
         
-        result=Oi_on.Eps_crab(industry_new)
+        result=Oi_on.Oi_crab(industry_new)
         
         
         params = {"message":industry_new+result}

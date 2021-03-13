@@ -114,7 +114,7 @@ def Eps_crab(industry_new):
     """
     #print(industry_new+'相關類股其今年累計EPS年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock)
     
-    result=industry_new+'相關類股其今年累計EPS年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock
+    result='相關類股其今年累計EPS年度成長率優於去年者，適合購買的股票為:'+'\n'+result_stock
     
     
     
