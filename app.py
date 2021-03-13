@@ -11,11 +11,11 @@ from linebot.models import *
 import mongodb
 import PER_on
 import Eps_on
-import EpsAgr_on
+#import EpsAgr_on
 import Ydr_on
-import Gm_on
-import Ni_on
-import Oi_on
+#import Gm_on
+#import Ni_on
+#import Oi_on
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -1084,7 +1084,7 @@ def handle_postback(event):
         params = {"message":industry_new+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
-        
+    """    
     elif event.postback.data == 'EPS年度成長率':  
         industry_new=save_industry(industry="")
         
@@ -1125,7 +1125,7 @@ def handle_postback(event):
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
 
-     
+     """
 
 
 
