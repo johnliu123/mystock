@@ -11,11 +11,11 @@ from linebot.models import *
 import mongodb
 import PER_on
 import Eps_on
-#import EpsAgr_on
+import EpsAgr_on
 import Ydr_on
-#import Gm_on
-#import Ni_on
-#import Oi_on
+import Gm_on
+import Ni_on
+import Oi_on
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -116,6 +116,38 @@ def stock_propose_template():
                         label='3.EPS',
                         text='3.EPS',
                         data='EPS'
+                        )
+                    ]
+            ),
+            CarouselColumn(
+                title='請輸入你要的選股策略:',
+                text='請選擇選股標的',
+                actions=[
+                    PostbackAction(
+                        label='4.EPS年度成長率',
+                        text='4.EPS年度成長率',
+                        data='EPS年度成長率'
+                        ),
+                    PostbackAction(
+                        label='5.毛利年度成長率',
+                        text='5.毛利年度成長率',
+                        data='毛利年度成長率'
+                        ),
+                    PostbackAction(
+                        label='6.稅後淨利年度成長率',
+                        text='6.稅後淨利年度成長率',
+                        data='稅後淨利年度成長率'
+                        )
+                    ]
+            ),
+            CarouselColumn(
+                title='請輸入你要的選股策略:',
+                text='請選擇選股標的',
+                actions=[
+                    PostbackAction(
+                        label='7.營業收入年度成長率',
+                        text='7.營業收入年度成長率',
+                        data='營業收入年度成長率'
                         )
                     ]
             )
@@ -1052,7 +1084,7 @@ def handle_postback(event):
         params = {"message":industry_new+result}
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
-    """    
+        
     elif event.postback.data == 'EPS年度成長率':  
         industry_new=save_industry(industry="")
         
@@ -1093,7 +1125,7 @@ def handle_postback(event):
         r = requests.post("https://notify-api.line.me/api/notify",
                                           headers=headers, params=params)
 
-     """
+     
 
 
 
