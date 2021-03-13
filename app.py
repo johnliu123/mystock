@@ -15,6 +15,7 @@ import Ydr_on
 import re
 import requests
 from bs4 import BeautifulSoup
+import stockmd
 
 
 from linebot.models import (
@@ -32,7 +33,9 @@ from linebot.models import (
 
 
 
+headers=stockmd.get_headers()
 
+"""
 headers = {
     
     "Authorization": "Bearer " + "YkrXjA4k7pswPML2wkdNxgcRhqSKPcrBysvLmIClsvd",
@@ -50,7 +53,7 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36",
     "Referer": "https://www.google.com/"
 }
-
+"""
 
 
 
