@@ -73,9 +73,9 @@ def Eps_crab(industry_new):
     stockEps_reciprocal1_table=[]
     stockEps_reciprocal2_table=[]
     stockEps_reciprocal3_table=[]
-    stockEps_reciprocal4_table=[]
-    stockEpsYr_list=[stockEps_reciprocal1_table,stockEps_reciprocal2_table,stockEps_reciprocal3_table,stockEps_reciprocal4_table]
-    
+    #stockEps_reciprocal4_table=[]
+    #stockEpsYr_list=[stockEps_reciprocal1_table,stockEps_reciprocal2_table,stockEps_reciprocal3_table,stockEps_reciprocal4_table]
+    stockEpsYr_list=[stockEps_reciprocal1_table,stockEps_reciprocal2_table,stockEps_reciprocal3_table]
     
     #取出近3年的EPS數值
     table=-1
@@ -93,8 +93,9 @@ def Eps_crab(industry_new):
     
     
     #欄位合併
-    stockresult_list={"代號":stock_num_list,stock_name_list[0]:stockEps_reciprocal4_table,stock_name_list[1]:stockEps_reciprocal3_table,stock_name_list[2]:stockEps_reciprocal2_table
-                     ,stock_name_list[3]:stockEps_reciprocal1_table}
+    # stockresult_list={"代號":stock_num_list,stock_name_list[0]:stockEps_reciprocal4_table,stock_name_list[1]:stockEps_reciprocal3_table,stock_name_list[2]:stockEps_reciprocal2_table
+    #                  ,stock_name_list[3]:stockEps_reciprocal1_table}
+    stockresult_list={"代號":stock_num_list,stock_name_list[0]:stockEps_reciprocal3_table,stock_name_list[1]:stockEps_reciprocal2_table,stock_name_list[2]:stockEps_reciprocal1_table}
     df_stock=pd.DataFrame(stockresult_list)
     
     
@@ -103,6 +104,7 @@ def Eps_crab(industry_new):
     
     
     #判斷第3行欄位空值數量 只取3年的EPS
+    """
     isnanum=df_stock[df_stock.columns[3]].isna().sum()
     if isnanum>10:
         #空值填補至2020Q3 (新調整的部分)
@@ -110,7 +112,7 @@ def Eps_crab(industry_new):
         df_stock=df_stock.drop([df_stock.columns[3]],axis=1)
     else:
         df_stock=df_stock.drop([df_stock.columns[1]],axis=1)
-        
+    """
     
     for i in df_stock.iloc[:,1:]:
         df_stock[i]=df_stock[i].astype(str).astype(float)
