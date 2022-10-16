@@ -4,7 +4,7 @@ services:
   env: python
   repo: https://github.com/johnliu123/mystock.git
   buildCommand: pip install gunicorn -r requirements.txt
-  startCommand:gunicorn app:app
+  startCommand:gunicorn app
   plan: free
   autoDeploy: false
   envVars:
